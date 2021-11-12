@@ -4,7 +4,7 @@ import Link from "next/link";
 import moment from "moment";
 
 function PostDetail({ post }) {
-  const getContentRaw = (item, type, index) => {
+  const getContentRaw = (item, type) => {
     let result = "";
 
     // paragraph
@@ -63,7 +63,7 @@ function PostDetail({ post }) {
           width={item.width}
           height={item.height}
           layout="intrinsic"
-          alt={item.altText}
+          alt={post.title}
         />
       );
     }

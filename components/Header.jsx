@@ -12,7 +12,7 @@ function Header() {
   }, []);
 
   return (
-    <div className="container mx-auto px-10 mb-8">
+    <div className="container mx-auto px-4 md:px-10 mb-8">
       <div className="border-b w-full inline-block border-blue-300 py-8">
         <div className="md:float-left block">
           <Link href="/">

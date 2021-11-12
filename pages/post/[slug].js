@@ -14,7 +14,7 @@ function PostDetails({ post }) {
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content={post.excerpt} />
       </Head>
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-12">
         <div className="col-span-1 lg:col-span-8">
           <PostDetail post={post} />
           <Author author={post.author} />

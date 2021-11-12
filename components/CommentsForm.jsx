@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { submitComment } from "../services"
+import { submitComment } from "../services";
 
 function CommentsForm({ slug }) {
   const [error, setError] = useState(false);
@@ -30,13 +30,16 @@ function CommentsForm({ slug }) {
           : "",
       storeData:
         window.localStorage.getItem("name") ||
-        window.localStorage.getItem("email"),
+        window.localStorage.getItem("email") !== null
+          ? true
+          : false,
     };
 
     setFormData(initialFormData);
   }, []);
 
   const onInputChange = (e) => {
+    setError(false);
     const { target } = e;
 
     if (target.type === "checkbox") {
@@ -70,7 +73,22 @@ function CommentsForm({ slug }) {
       localStorage.removeItem("email");
     }
 
-    submitComment(commentObj).then(res => {console.log(res)})
+    submitComment(commentObj).then((res) => {
+      if (res.createComment) {
+        if (!storeData) {
+          formData.name = "";
+          formData.email = "";
+        }
+        formData.comment = "";
+        setFormData({ ...formData });
+        console.log(formData);
+        setShowSuccessMessage(true);
+        setTimeout(() => {
+          setShowSuccessMessage(false);
+          console.log(showSuccessMessage);
+        }, 3000);
+      }
+    });
   };
 
   return (
@@ -126,18 +144,20 @@ function CommentsForm({ slug }) {
           </label>
         </div>
       </div>
-      <button
-        type="button"
-        onClick={handleCommentSubmission}
-        className="text-white text-sm py-3 px-6 rounded-full bg-blue-500 transition duration-500 ease-out hover:bg-indigo-800"
-      >
-        Post Comment
-      </button>
-      {showSuccessMessage && (
-        <div className="text-sm font-semibold mt-3 text-green-500">
-          Comment submited and waiting for being reviewed
-        </div>
-      )}
+      <div className="flex justify-start items-center flex-wrap">
+        <button
+          type="button"
+          onClick={handleCommentSubmission}
+          className="text-white text-sm py-3 px-6 rounded-full bg-blue-500 transition duration-500 ease-out hover:bg-indigo-800"
+        >
+          Post Comment
+        </button>
+        {showSuccessMessage && (
+          <div className="text-sm mt-3 sm:mt-0 ml-0 sm:ml-3 text-green-500">
+            Comment submited and waiting for being reviewed
+          </div>
+        )}
+      </div>
     </div>
   );
 }

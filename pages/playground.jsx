@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import {Loader} from '../components'
+
 function playground(props) {
   const [text, setText] = useState("");
   const [data, setData] = useState({name: "", age: 10})
@@ -20,6 +22,7 @@ function playground(props) {
 
   return (
     <div className="container mx-auto px-4 md:px-10 mb-8">
+      <Loader />
       <div>
         <input className="mb-8" type="text" onChange={handleChange} value={text} />
       </div>

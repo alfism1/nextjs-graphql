@@ -5,7 +5,7 @@ const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT
 export const getPosts = async () => {
   const query = gql`
     query MyQuery {
-      postsConnection {
+      postsConnection(orderBy: createdAt_DESC) {
         edges {
           node {
             title
@@ -78,7 +78,6 @@ export const getCategories = async () => {
 }
 
 export const getPostDetails = async (slug) => {
-  console.log(slug)
   const query = gql`
     query GetPostDetails( $slug: String! ) {
       post(where: { slug: $slug }) {
@@ -91,6 +90,7 @@ export const getPostDetails = async (slug) => {
         category {
           id
           name
+          slug
         }
         author {
           id
@@ -98,6 +98,7 @@ export const getPostDetails = async (slug) => {
           picture {
             url
           }
+          biography
         }
         coverImage {
           url
@@ -114,4 +115,16 @@ export const getPostDetails = async (slug) => {
   const result = await request(graphqlAPI, query, { slug })
 
   return result.post;
+}
+
+export const submitComment = async (commentObj) => {
+  const result = await fetch('/api/comments', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(commentObj),
+  });
+
+  return result.json();
 }

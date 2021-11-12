@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 
 import { getCategories } from "../services";
 
@@ -13,9 +14,11 @@ function Categories() {
 
   return (
     <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-      <h3 className="text-xl font-semibold border-b pb-6 mb-6">Category</h3>
+      <div className="text-xl font-semibold border-b pb-6 mb-6">Category</div>
       {categories.map((category) => (
-        <span key={category.name} className="cursor-pointer block pb-3 mb-3">{category.name}</span>
+        <Link key={category.name} href={`/category/${category.slug}`}>
+          <span className="cursor-pointer block pb-3 mb-3">{category.name}</span>
+        </Link>
       ))}
     </div>
   );

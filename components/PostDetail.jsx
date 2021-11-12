@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import moment from "moment";
 
 function PostDetail({ post }) {
@@ -72,10 +73,11 @@ function PostDetail({ post }) {
         <blockquote className="p-4 italic border-l-4 bg-gray-50 mb-8">
           {item.children.map((content, index) => {
             return (
-            <React.Fragment key={index}>
-              {getContentFragment(content, index)}
-            </React.Fragment>
-          )})}
+              <React.Fragment key={index}>
+                {getContentFragment(content, index)}
+              </React.Fragment>
+            );
+          })}
         </blockquote>
       );
     }
@@ -135,7 +137,9 @@ function PostDetail({ post }) {
     }
 
     if (content.type == "paragraph") {
-      return content.children.map((c, i) => (<React.Fragment key={i}>{getContentFragment(c, i)}</React.Fragment>))
+      return content.children.map((c, i) => (
+        <React.Fragment key={i}>{getContentFragment(c, i)}</React.Fragment>
+      ));
     }
 
     return <React.Fragment key={index}>{content.text}</React.Fragment>;
@@ -149,6 +153,7 @@ function PostDetail({ post }) {
         width={post.coverImage.width}
         height={post.coverImage.height}
         layout="intrinsic"
+        alt={post.title}
       />
       <div className="px-8 py-4">
         <div className="sm:flex sm:flex-row sm:justify-between text-center mb-8 border-b-2 pb-4">
@@ -159,13 +164,14 @@ function PostDetail({ post }) {
               width={30}
               height={30}
               layout="intrinsic"
+              alt={post.author.biography}
             />
             <span className="ml-2">{post.author.name}</span>
           </div>
           <div className="flex items-center justify-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 inline mr-2 text-pink-500"
+              className="h-6 w-6 inline mr-2 text-red-500"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -180,7 +186,10 @@ function PostDetail({ post }) {
             <span>{moment(post.createdAt).format("MMM DD, YYYY")}</span>
           </div>
         </div>
-        <h1 className="text-3xl font-bold mb-8">{post.title}</h1>
+        <Link href={`/category/${post.category.slug}`}>
+          <span className="cursor-pointer font-bold text-red-600">{post.category.name}</span>
+        </Link>
+        <h1 className="text-3xl font-bold mt-4 mb-8">{post.title}</h1>
         <section>
           {post.content.raw.children.map((item, index) => {
             return (

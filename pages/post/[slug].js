@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router'
+import Head from "next/head";
 
 import { PostWidget, Categories, PostDetail, Author, Comments, CommentsForm } from '../../components'
 
@@ -9,6 +9,11 @@ function PostDetails({ post }) {
 
   return (
     <div className="container mx-auto px-4 md:px-10 mb-8">
+      <Head>
+        <title>{post.title}</title>
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content={post.excerpt} />
+      </Head>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div className="col-span-1 lg:col-span-8">
           <PostDetail post={post} />
@@ -28,7 +33,8 @@ function PostDetails({ post }) {
 }
 export default PostDetails;
 
-export async function getStaticProps({ params }) {
+
+export async function getServerSideProps({ params }) {
   const data = await getPostDetails(params.slug);
 
   return {
@@ -36,11 +42,20 @@ export async function getStaticProps({ params }) {
   }
 }
 
-export async function getStaticPaths() {
-  const posts = await getPosts();
+// export async function getStaticProps({ params }) {
+//   const data = await getPostDetails(params.slug);
 
-  return {
-    paths: posts.map(({ node: { slug } }) => ({ params: { slug } })),
-    fallback: false,
-  }
-}
+//   return {
+//     props: { post: data },
+//     revalidate: 10,
+//   }
+// }
+
+// export async function getStaticPaths() {
+//   const posts = await getPosts();
+
+//   return {
+//     paths: posts.map(({ node: { slug } }) => ({ params: { slug } })),
+//     fallback: false,
+//   }
+// }

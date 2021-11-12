@@ -13,16 +13,17 @@ function PostWidget({}) {
 
   return (
     <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-      <h3 className="text-xl font-semibold border-b pb-6 mb-6">Recent Posts</h3>
+      <div className="text-xl font-semibold border-b pb-6 mb-6">Recent Posts</div>
       {relatedPosts.map((post) => (
-        <div key={post.title} className="flex items-center w-full mb-4">
-          <div className="w-16 flex-none">
+        <div key={post.title} className="flex items-start w-full mb-4">
+          <div className="w-16 flex-none mt-1">
             <Image
               src={post.coverImage.url}
               width={90}
               height={60}
               layout={"intrinsic"}
               className="align-middle rounded-md"
+              alt={post.title}
             />
           </div>
           <div className="flex-grow ml-4">

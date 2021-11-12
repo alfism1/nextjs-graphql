@@ -14,7 +14,12 @@ function PostCard({ post }) {
           className="object-top absolute h-80 w-full object-cover shadow-lg rounded-t-lg lg:rounded-t-lg"
         />
       </div>
-      <h1 className="transition duration-700 text-center mb-8 cursor-pointer hover:text-pink-600 text-3xl font-semibold px-8">
+      <Link href={`/category/${post.category.slug}`}>
+        <span className="cursor-pointer font-bold text-red-600 px-5 lg:px-0">
+          {post.category.name}
+        </span>
+      </Link>
+      <h1 className="transition duration-300 mb-8 cursor-pointer hover:text-red-600 text-3xl font-semibold mt-4 px-5 lg:px-0">
         <Link href={`/post/${post.slug}`}>{post.title}</Link>
       </h1>
       <div className="sm:flex sm:items-center sm:justify-center mb-8">
@@ -31,7 +36,7 @@ function PostCard({ post }) {
         <div className="flex items-center justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 inline mr-2 text-pink-500"
+            className="h-6 w-6 inline mr-2 text-red-500"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -47,6 +52,13 @@ function PostCard({ post }) {
         </div>
       </div>
       <p className="px-5 text-center">{post.excerpt}</p>
+      <div className="flex items-center justify-center mt-8">
+        <Link href={`/post/${post.slug}`}>
+          <button className="rounded-full text-white text-sm bg-red-600 px-5 py-2">
+            Continue Reading
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }

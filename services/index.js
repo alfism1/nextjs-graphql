@@ -162,7 +162,7 @@ export const getPostsByCategory = async (slug) => {
         name
         slug
         id
-        posts {
+        posts(orderBy: createdAt_DESC) {
           createdAt
           title
           slug

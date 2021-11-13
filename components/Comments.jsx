@@ -10,7 +10,7 @@ function Comments({ slug }) {
   }, []);
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-8 mb-0 md:mb-8">
+    <div className="bg-white shadow-lg p-8 mb-0 md:mb-8">
       <div className="text-xl font-semibold border-b pb-6 mb-6">
         {comments.length} Comment(s)
       </div>

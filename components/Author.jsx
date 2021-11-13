@@ -3,7 +3,7 @@ import Image from "next/image";
 
 function Author({ author }) {
   return (
-    <div className="bg-black bg-opacity-50 text-center rounded-lg text-white p-12 mb-8 mt-20 relative ">
+    <div className="bg-black bg-opacity-50 text-center text-white p-12 mb-8 mt-20 relative ">
       <div className="absolute -top-14 left-0 right-0">
         <Image
           className="rounded-full align-middle"

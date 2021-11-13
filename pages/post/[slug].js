@@ -19,6 +19,7 @@ function PostDetails({ post }) {
         <title>{post.title}</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content={post.excerpt} />
+        <link rel="image_src" href={post.coverImage.url} />
       </Head>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-12">
         <div className="col-span-1 lg:col-span-8">

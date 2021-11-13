@@ -5,13 +5,13 @@ import moment from "moment";
 
 function PostCard({ post }) {
   return (
-    <div className="bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8">
+    <div className="bg-white shadow-lg p-0 lg:p-8 pb-12 mb-8">
       <div className="relative overflow-hidden shadow-md pb-80 mb-6">
         <Image
           src={post.coverImage.url}
           alt={post.title}
           layout={"fill"}
-          className="object-top absolute h-80 w-full object-cover shadow-lg rounded-t-lg lg:rounded-t-lg"
+          className="object-top absolute h-80 w-full object-cover shadow-lg"
         />
       </div>
       <Link href={`/category/${post.category.slug}`}>
@@ -54,7 +54,7 @@ function PostCard({ post }) {
       <p className="px-5 text-center">{post.excerpt}</p>
       <div className="flex items-center justify-center mt-8">
         <Link href={`/post/${post.slug}`}>
-          <button className="rounded-full text-white text-sm bg-red-600 px-5 py-2">
+          <button className="text-white text-sm bg-red-600 px-5 py-2">
             Continue Reading
           </button>
         </Link>

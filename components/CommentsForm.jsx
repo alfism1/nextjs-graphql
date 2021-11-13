@@ -92,14 +92,14 @@ function CommentsForm({ slug }) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+    <div className="bg-white shadow-lg p-8 mb-8">
       <div className="text-xl font-semibold border-b pb-6 mb-6">
         Comments Form
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
         <input
           ref={nameEl}
-          className="py-2 px-4 outline-none w-full rounded-lg focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700"
+          className="py-2 px-4 outline-none w-full focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700"
           name="name"
           placeholder="Name"
           value={formData.name}
@@ -107,7 +107,7 @@ function CommentsForm({ slug }) {
         />
         <input
           ref={emailEl}
-          className="py-2 px-4 outline-none w-full rounded-lg focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700"
+          className="py-2 px-4 outline-none w-full focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700"
           name="email"
           placeholder="Email"
           value={formData.email}
@@ -117,7 +117,7 @@ function CommentsForm({ slug }) {
       <div className="grid grid-cols-1 gap-4 mb-4">
         <textarea
           ref={commentEl}
-          className="p-4 outline-none w-full rounded-lg focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700"
+          className="p-4 outline-none w-full focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700"
           placeholder="Comments"
           name="comment"
           onChange={onInputChange}
@@ -148,7 +148,7 @@ function CommentsForm({ slug }) {
         <button
           type="button"
           onClick={handleCommentSubmission}
-          className="text-white text-sm py-3 px-6 rounded-full bg-blue-500 transition duration-500 ease-out hover:bg-indigo-800"
+          className="text-white text-sm py-3 px-6 bg-blue-500 transition duration-500 ease-out hover:bg-indigo-800"
         >
           Post Comment
         </button>

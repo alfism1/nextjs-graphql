@@ -176,6 +176,13 @@ export const getPostsByCategory = async (slug) => {
             name
             slug
           }
+          author {
+            id
+            name
+            picture {
+              url
+            }
+          }
         }
       }
     }

@@ -58,14 +58,16 @@ function PostDetail({ post }) {
     // image
     if (type == "image") {
       result = (
-        <Image
-          src={item.src}
-          width={item.width}
-          height={item.height}
-          layout="intrinsic"
-          alt={post.title}
-          className="w-full border hidden"
-        />
+        <div className="mb-8">
+          <Image
+            src={item.src}
+            width={item.width}
+            height={item.height}
+            layout="intrinsic"
+            alt={post.title}
+            className="w-full border hidden"
+          />
+        </div>
       );
     }
     // block-quote
@@ -147,10 +149,10 @@ function PostDetail({ post }) {
   };
 
   return (
-    <div className="bg-white lg:p-8 mb-8 rounded-lg">
+    <div className="bg-white lg:p-8 mb-8">
       <div className="lg:px-8 lg:pt-8">
         <Image
-          className="rounded-t-lg"
+          className=""
           src={post.coverImage.url}
           width={post.coverImage.width}
           height={post.coverImage.height}
@@ -190,7 +192,9 @@ function PostDetail({ post }) {
           </div>
         </div>
         <Link href={`/category/${post.category.slug}`}>
-          <span className="cursor-pointer font-bold text-red-600">{post.category.name}</span>
+          <span className="cursor-pointer font-bold text-red-600">
+            {post.category.name}
+          </span>
         </Link>
         <h1 className="text-3xl font-bold mt-4 mb-8">{post.title}</h1>
         <section>

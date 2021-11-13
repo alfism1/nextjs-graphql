@@ -13,7 +13,7 @@ function Categories() {
   }, []);
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+    <div className="bg-white shadow-lg p-8 mb-8">
       <div className="text-xl font-semibold border-b pb-6 mb-6">Category</div>
       {categories.map((category) => (
         <Link key={category.name} href={`/category/${category.slug}`}>

@@ -64,6 +64,7 @@ function PostDetail({ post }) {
           height={item.height}
           layout="intrinsic"
           alt={post.title}
+          className="w-full border hidden"
         />
       );
     }
@@ -147,14 +148,16 @@ function PostDetail({ post }) {
 
   return (
     <div className="bg-white lg:p-8 mb-8 rounded-lg">
-      <Image
-        className="rounded-t-lg lg:rounded-lg"
-        src={post.coverImage.url}
-        width={post.coverImage.width}
-        height={post.coverImage.height}
-        layout="intrinsic"
-        alt={post.title}
-      />
+      <div className="lg:px-8 lg:pt-8">
+        <Image
+          className="rounded-t-lg"
+          src={post.coverImage.url}
+          width={post.coverImage.width}
+          height={post.coverImage.height}
+          layout="responsive"
+          alt={post.title}
+        />
+      </div>
       <div className="px-8 py-4">
         <div className="sm:flex sm:flex-row sm:justify-between text-center mb-8 border-b-2 pb-4">
           <div className="flex items-center justify-center mb-3 sm:mb-0">

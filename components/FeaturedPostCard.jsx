@@ -29,6 +29,7 @@ const FeaturedPostCard = ({ post }) => (
         <p className="ml-2 font-medium">{post.author.name}</p>
       </div>
     </div>
+    <Link href={`/post/${post.slug}`}><span className="absolute cursor-pointer w-full h-72" /></Link>
   </div>
 );
 

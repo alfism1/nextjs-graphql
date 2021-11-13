@@ -17,6 +17,7 @@ export const getPosts = async () => {
             category {
               id
               name
+              slug
             }
             author {
               id

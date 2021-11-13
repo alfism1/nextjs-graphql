@@ -47,7 +47,7 @@ export async function getStaticProps() {
       revalidate: 10
     };
   } catch (error) {
-    res.statucCode = 404
+    // res.statucCode = 404
     return { props: {} }
   }
 

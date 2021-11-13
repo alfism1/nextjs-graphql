@@ -28,9 +28,16 @@ export default function Home({ posts }) {
 }
 
 export async function getStaticProps() {
-  const posts = (await getPosts()) || [];
+  try {
+    const posts = (await getPosts()) || [];
 
-  return {
-    props: { posts },
-  };
+    return {
+      props: { posts },
+      revalidate: 10
+    };
+  } catch (error) {
+    res.statucCode = 404
+    return { props: {} }
+  }
+
 }

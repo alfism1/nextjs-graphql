@@ -22,19 +22,22 @@ function Header() {
     });
   }, []);
 
-  useEffect(() => {
-    // check if click outside
-    const checkIfClickedOutside = (e) => {
-      if (open && ref.current && !ref.current.contains(e.target)) {
-        setOpen(false)
-      }
+  // check if click outside
+  const checkIfClickedOutside = (e) => {
+    if (open && ref.current && !ref.current.contains(e.target)) {
+      setOpen(false);
+      return true;
     }
+  };
+  useEffect(() => {
     document.addEventListener("mousedown", checkIfClickedOutside);
-
-
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener("mousedown", checkIfClickedOutside);
+    };
   }, [open]);
 
-  const handleToggleOpen = () => {
+  const handleToggleOpen = (e) => {
     setOpen(!open);
   };
 
@@ -59,23 +62,47 @@ function Header() {
             ))}
           </div>
           <div className="flex items-center md:hidden">
-            <button
-              className="outline-none mobile-menu-button"
-              onClick={handleToggleOpen}
-            >
-              <svg
-                className=" w-8 h-8 text-black  hover:bg-gray-200 rounded-full p-1 transition duration-200"
-                x-show="!showMenu"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+            {!open && (
+              <button
+                className="outline-none mobile-menu-button"
+                onClick={() => setOpen(true)}
               >
-                <path d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
-            </button>
+                <svg
+                  className=" w-8 h-8 text-black  hover:bg-gray-200 rounded-full p-1 transition duration-200"
+                  x-show="!showMenu"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+              </button>
+            )}
+
+            {open && (
+              <button
+                className="outline-none mobile-menu-button"
+                onClick={() => setOpen(false)}
+              >
+                <svg
+                  className=" w-8 h-8 text-black  hover:bg-gray-200 rounded-full p-1 transition duration-200"
+                  xmlns="http://www.w3.org/2000/svg"
+                  x-show="!showMenu"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <line x1="0" y1="0" x2="24" y2="24" />
+                  <line x1="24" y1="0" x2="0" y2="24" />
+                </svg>
+              </button>
+            )}
           </div>
         </div>
         {open && (

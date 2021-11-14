@@ -4,7 +4,9 @@ import { Header } from "./";
 function Layout({ children }) {
   return (
     <>
-      <Header />
+      <div className="sticky top-0 z-50">
+        <Header />
+      </div>
       {children}
     </>
   );

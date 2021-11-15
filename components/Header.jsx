@@ -64,6 +64,7 @@ function Header() {
           <div className="flex items-center md:hidden">
             {!open && (
               <button
+                aria-label="Main menu"
                 className="outline-none mobile-menu-button"
                 onClick={() => setOpen(true)}
               >

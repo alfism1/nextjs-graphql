@@ -3,10 +3,12 @@ import { Header } from "./";
 
 function Layout({ children }) {
   return (
-    <div className="container mx-auto px-6">
-      <Header />
+    <>
+      <div className="sticky top-0 z-50">
+        <Header />
+      </div>
       {children}
-    </div>
+    </>
   );
 }
 

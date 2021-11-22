@@ -1,7 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import moment from "moment";
+import { motion } from "framer-motion";
+import { Href } from "../components";
 
 function PostCardV2({
   title,
@@ -16,29 +17,35 @@ function PostCardV2({
 }) {
   return (
     <React.Fragment>
-      <div className="w-full">
+      <motion.div
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 1.05 }}
+        className="w-full"
+      >
         {/* <img
         src="https://www.unbox.id/wp-content/uploads/2021/07/152137-laptops-review-apple-macbook-pro-2020-review-image1-pbzm4ejvvs.jpg"
         alt=""
         className="object-cover w-full h-50 md:h-full max-h-80"
       /> */}
-        {imageSrc ? (
-          <Image
-            priority
-            src={imageSrc}
-            width={imageWidth}
-            height={imageHeight}
-            layout="responsive"
-            objectFit="contain"
-          />
-        ) : (
-          <Image
-            src="https://media.graphcms.com/mL0rU7w1TiqGpppMVsKZ"
-            width={440}
-            height={293}
-            layout="responsive"
-          />
-        )}
+        <Href slug={slug} originalUrl={originalUrl}>
+          {imageSrc ? (
+            <Image
+              priority
+              src={imageSrc}
+              width={imageWidth}
+              height={imageHeight}
+              layout="responsive"
+              objectFit="contain"
+            />
+          ) : (
+            <Image
+              src="https://media.graphcms.com/mL0rU7w1TiqGpppMVsKZ"
+              width={440}
+              height={293}
+              layout="responsive"
+            />
+          )}
+        </Href>
 
         <div className="pb-6">
           <div className="my-4">
@@ -55,7 +62,12 @@ function PostCardV2({
             )}
             <span className="text-black text-xs p-2">{publishData}</span>
           </div>
-          {slug ? (
+          <Href slug={slug} originalUrl={originalUrl}>
+            <p className="text-black cursor-pointer hover:underline text-lg leading-6 font-semibold">
+              {title}
+            </p>
+          </Href>
+          {/* {slug ? (
             <Link href={slug}>
               <p className="text-black cursor-pointer hover:underline text-lg leading-6 font-semibold">
                 {title}
@@ -67,9 +79,9 @@ function PostCardV2({
                 {title}
               </p>
             </a>
-          )}
+          )} */}
         </div>
-      </div>
+      </motion.div>
     </React.Fragment>
   );
 }

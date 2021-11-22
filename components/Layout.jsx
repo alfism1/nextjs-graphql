@@ -1,12 +1,17 @@
 import React from "react";
-import { Header } from "./";
+import { Header, Container, Footer } from "./";
 
 function Layout({ children }) {
   return (
-    <div className="container mx-auto px-6">
-      <Header />
+    <React.Fragment>
+      <Container>
+        <Header />
+      </Container>
       {children}
-    </div>
+      <Container>
+        <Footer />
+      </Container>
+    </React.Fragment>
   );
 }
 

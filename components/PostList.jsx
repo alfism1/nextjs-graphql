@@ -1,10 +1,13 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 function PostList({ title, slug, imageSrc, originalUrl }) {
   return (
-    <React.Fragment>
+    <motion.div
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 1.05 }}>
       {slug ? (
         <Link href={slug}>
           <PostItem imageSrc={imageSrc} title={title} />
@@ -14,7 +17,7 @@ function PostList({ title, slug, imageSrc, originalUrl }) {
           <PostItem imageSrc={imageSrc} title={title} />
         </a>
       )}
-    </React.Fragment>
+    </motion.div>
   );
 }
 

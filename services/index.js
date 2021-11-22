@@ -18,6 +18,9 @@ export const getPosts = async () => {
               id
               name
               slug
+              boxColor {
+                hex
+              }
             }
             author {
               id

@@ -1,9 +1,11 @@
 import React from "react";
-import { PostCardV1, PostCardV2, PostList, H1 } from "../components";
+import { Container, PostCardV1, PostCardV2, PostList, H1 } from "../components";
 import axios from "axios";
+import { getPosts } from "../services";
 import moment from "moment";
+import Head from "next/head"
 
-function Home({ nytimesPosts, nytimesViewedPosts }) {
+function Home({ posts, nytimesPosts, nytimesViewedPosts }) {
   const checkNytimesMedia = (post) => {
     return post.media[0] !== undefined
       ? post.media[0]["media-metadata"][2]
@@ -12,55 +14,103 @@ function Home({ nytimesPosts, nytimesViewedPosts }) {
 
   return (
     <React.Fragment>
-      <H1 style="py-4">Nytimes News</H1>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        {nytimesPosts.results.slice(0, 2).map((post) => {
-          return (
-            <PostCardV1
-              key={post.title}
-              title={post.title}
-              category={post.section}
-              imageSrc={checkNytimesMedia(post)?.url}
-              imageWidth={checkNytimesMedia(post)?.width}
-              imageHeight={checkNytimesMedia(post)?.height}
-              publishData={moment(post.published_date).format("MMM DD, YYYY")}
-              originalUrl={post.url}
-            />
-          );
-        })}
+      <Head>
+        <title>Super blog created by me</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className="py-8 bg-gray-100 border">
+        <Container>
+          <H1 style="text-center">Original Posts Featured</H1>
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 mt-6">
+            {posts.map((post) => (
+              <PostCardV1
+                key={post.node.title}
+                title={post.node.title}
+                slug={post.node.slug}
+                category={post.node.category.name}
+                categorySlug={post.node.category.slug}
+                categoryColor={post.node.category.boxColor.hex}
+                imageSrc={post.node.coverImage.url}
+                publishData={moment(post.node.createdAt).format("MMM DD, YYYY")}
+              />
+            ))}
+          </div>
+        </Container>
       </div>
-      <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
-        {nytimesPosts.results.slice(2, 5).map((post) => {
-          return (
-            <PostCardV2
-              key={post.title}
-              title={post.title}
-              category={post.section}
-              imageSrc={checkNytimesMedia(post)?.url}
-              imageWidth={checkNytimesMedia(post)?.width}
-              imageHeight={checkNytimesMedia(post)?.height}
-              publishData={moment(post.published_date).format("MMM DD, YYYY")}
-              originalUrl={post.url}
-            />
-          );
-        })}
-      </div>
+      <Container>
+        <H1 style="py-4">Nytimes News</H1>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          {nytimesPosts.results.slice(0, 2).map((post) => {
+            return (
+              <PostCardV1
+                key={post.title}
+                title={post.title}
+                category={post.section}
+                imageSrc={checkNytimesMedia(post)?.url}
+                publishData={moment(post.published_date).format("MMM DD, YYYY")}
+                originalUrl={post.url}
+              />
+            );
+          })}
+        </div>
+        <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
+          {nytimesPosts.results.slice(2, 5).map((post) => {
+            return (
+              <PostCardV2
+                key={post.title}
+                title={post.title}
+                category={post.section}
+                imageSrc={checkNytimesMedia(post)?.url}
+                imageWidth={checkNytimesMedia(post)?.width}
+                imageHeight={checkNytimesMedia(post)?.height}
+                publishData={moment(post.published_date).format("MMM DD, YYYY")}
+                originalUrl={post.url}
+              />
+            );
+          })}
+        </div>
 
-      <div className="mt-6 grid gap-6 grid-cols-1 md:grid-cols-12">
-        <div className="md:col-span-8">
-          <PostCardV1
-            title={nytimesPosts.results[6].title}
-            category={nytimesPosts.results[6].section}
-            imageSrc={checkNytimesMedia(nytimesPosts.results[6]).url}
-            imageWidth={checkNytimesMedia(nytimesPosts.results[6]).width}
-            imageHeight={checkNytimesMedia(nytimesPosts.results[6]).height}
-            publishData={moment(nytimesPosts.results[6].published_date).format(
-              "MMM DD, YYYY"
-            )}
-            originalUrl={nytimesPosts.results[6].url}
-          />
-          <div className="mt-6 grid gap-6 grid-cols-1 md:grid-cols-2">
-            {nytimesPosts.results.slice(7, 11).map((post) => (
+        <div className="mt-6 grid gap-6 grid-cols-1 md:grid-cols-12">
+          <div className="md:col-span-8">
+            <PostCardV1
+              title={nytimesPosts.results[6].title}
+              category={nytimesPosts.results[6].section}
+              imageSrc={checkNytimesMedia(nytimesPosts.results[6]).url}
+              publishData={moment(
+                nytimesPosts.results[6].published_date
+              ).format("MMM DD, YYYY")}
+              originalUrl={nytimesPosts.results[6].url}
+            />
+            <div className="mt-6 grid gap-6 grid-cols-1 md:grid-cols-2">
+              {nytimesPosts.results.slice(7, 11).map((post) => (
+                <PostCardV2
+                  key={post.title}
+                  title={post.title}
+                  category={post.section}
+                  imageSrc={checkNytimesMedia(post)?.url}
+                  imageWidth={checkNytimesMedia(post)?.width}
+                  imageHeight={checkNytimesMedia(post)?.height}
+                  publishData={moment(post.published_date).format(
+                    "MMM DD, YYYY"
+                  )}
+                  originalUrl={post.url}
+                />
+              ))}
+            </div>
+          </div>
+          <div className="md:col-span-4">
+            <H1 style="pb-4 -mt-1">Nytimes Most Read</H1>
+            {nytimesViewedPosts.results.slice(0, 4).map((post) => (
+              <PostList
+                key={post.title}
+                title={post.title}
+                imageSrc={checkNytimesMedia(post)?.url}
+                originalUrl={post.url}
+              />
+            ))}
+
+            <H1 style="pb-4 -mt-1">Nytimes Popular</H1>
+            {nytimesViewedPosts.results.slice(4, 6).map((post) => (
               <PostCardV2
                 key={post.title}
                 title={post.title}
@@ -74,32 +124,7 @@ function Home({ nytimesPosts, nytimesViewedPosts }) {
             ))}
           </div>
         </div>
-        <div className="md:col-span-4">
-          <H1 style="pb-4 -mt-1">Nytimes Most Read</H1>
-          {nytimesViewedPosts.results.slice(0, 4).map((post) => (
-            <PostList
-              key={post.title}
-              title={post.title}
-              imageSrc={checkNytimesMedia(post)?.url}
-              originalUrl={post.url}
-            />
-          ))}
-
-          <H1 style="pb-4 -mt-1">Nytimes Popular</H1>
-          {nytimesViewedPosts.results.slice(4, 6).map((post) => (
-            <PostCardV2
-              key={post.title}
-              title={post.title}
-              category={post.section}
-              imageSrc={checkNytimesMedia(post)?.url}
-              imageWidth={checkNytimesMedia(post)?.width}
-              imageHeight={checkNytimesMedia(post)?.height}
-              publishData={moment(post.published_date).format("MMM DD, YYYY")}
-              originalUrl={post.url}
-            />
-          ))}
-        </div>
-      </div>
+      </Container>
     </React.Fragment>
   );
 }
@@ -119,8 +144,10 @@ export async function getStaticProps() {
     );
     const nytimesViewedPosts = nytimesViewed.data;
 
+    const posts = (await getPosts()) || [];
+
     return {
-      props: { nytimesPosts, nytimesViewedPosts },
+      props: { posts, nytimesPosts, nytimesViewedPosts },
       revalidate: 10,
     };
   } catch (error) {

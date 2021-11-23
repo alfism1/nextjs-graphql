@@ -27,7 +27,7 @@ function PostCardV2({
         alt=""
         className="object-cover w-full h-50 md:h-full max-h-80"
       /> */}
-        <Href slug={slug} originalUrl={originalUrl}>
+        <Href slug={`/post/${slug}`} originalUrl={originalUrl}>
           {imageSrc ? (
             <Image
               priority
@@ -62,7 +62,7 @@ function PostCardV2({
             )}
             <span className="text-black text-xs p-2">{publishData}</span>
           </div>
-          <Href slug={slug} originalUrl={originalUrl}>
+          <Href slug={`/post/${slug}`} originalUrl={originalUrl}>
             <p className="text-black cursor-pointer hover:underline text-lg leading-6 font-semibold">
               {title}
             </p>

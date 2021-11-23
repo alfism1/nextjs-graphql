@@ -1,0 +1,8 @@
+.category {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 10;
+  -ms-grid-column-span: 3;
+  grid-area: 2 / 10 / span 1/ span 3;
+}
+/*# sourceMappingURL=Home.module.css.map */

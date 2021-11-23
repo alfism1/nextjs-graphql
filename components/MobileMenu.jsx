@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaTimes } from "react-icons/fa";
 import axios from "axios";
+import checkNytimesMedia from "../components/Utils/Common"
 
 import { PostList, SocialMedia } from "../components";
 
@@ -58,7 +59,7 @@ function MobileMenu({ openMenu, handleMenuToggle }) {
             <PostList
               key={post.title}
               title={post.title}
-              imageSrc={post.media[0]["media-metadata"][2].url}
+              imageSrc={checkNytimesMedia(post)?.url}
             />
           ))}
         </div>

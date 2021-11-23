@@ -2,15 +2,12 @@ import React from "react";
 import { Container, PostCardV1, PostCardV2, PostList, H1 } from "../components";
 import axios from "axios";
 import { getPosts } from "../services";
+import checkNytimesMedia from "../components/Utils/Common"
 import moment from "moment";
 import Head from "next/head"
 
 function Home({ posts, nytimesPosts, nytimesViewedPosts }) {
-  const checkNytimesMedia = (post) => {
-    return post.media[0] !== undefined
-      ? post.media[0]["media-metadata"][2]
-      : null;
-  };
+
 
   return (
     <React.Fragment>

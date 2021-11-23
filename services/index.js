@@ -109,6 +109,9 @@ export const getCategories = async () => {
       categories {
         name
         slug
+        boxColor {
+                hex
+              }
       }
     }
   `

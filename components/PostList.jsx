@@ -5,9 +5,7 @@ import { motion } from "framer-motion";
 
 function PostList({ title, slug, imageSrc, originalUrl }) {
   return (
-    <motion.div
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 1.05 }}>
+    <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 1.05 }}>
       {slug ? (
         <Link href={slug}>
           <PostItem imageSrc={imageSrc} title={title} />
@@ -25,13 +23,23 @@ function PostItem({ imageSrc, title }) {
   return (
     <div className="flex w-full mb-6 cursor-pointer">
       <div className="flex-none">
+        {imageSrc ? (
+          <Image
+            className="object-cover"
+            src={imageSrc}
+            width={"100%"}
+            height={"100%"}
+            layout="intrinsic"
+          />
+        ) : (
         <Image
           className="object-cover"
-          src={imageSrc}
+          src="https://media.graphcms.com/mL0rU7w1TiqGpppMVsKZ"
           width={"100%"}
           height={"100%"}
           layout="intrinsic"
         />
+        )}
       </div>
       <p className="ml-4 text-base leading-6 font-semibold hover:underline">
         {title}

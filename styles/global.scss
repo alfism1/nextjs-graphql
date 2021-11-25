@@ -28,9 +28,9 @@ body {
   }
 }
 
-.text-shadow {
-  text-shadow: 0px 2px 0px rgb(0 0 0 / 30%);
-}
+// .text-shadow {
+//   text-shadow: 0px 2px 0px rgb(0 0 0 / 30%);
+// }
 
 .adjacent-post {
   & .arrow-btn {
@@ -66,4 +66,11 @@ a {
 button:active {
   border-style: outset;
   background-color: none;
+}
+a.dy.kr {
+  color: rgb(24, 24, 192);
+  font-weight: bold;
+  &:hover{
+    text-decoration: underline;
+  }
 }

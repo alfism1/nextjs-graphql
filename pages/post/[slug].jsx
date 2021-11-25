@@ -1,12 +1,17 @@
 import React from "react";
-import { PostDetail } from "../../components";
+import { ArticleDetail, Loader } from "../../components";
 import { getPostDetails, getPosts } from "../../services";
+import { useRouter } from "next/router";
 
 function PostDetails({ post }) {
+  const router = useRouter();
+  if (router.isFallback) {
+    return <Loader />;
+  }
+
   return (
     <div>
-      Coming soon
-      {/* <PostDetail post={post} /> */}
+      <ArticleDetail post={post} />
     </div>
   );
 }

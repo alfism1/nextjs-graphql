@@ -4,9 +4,8 @@ import { Header, Container, Footer } from "./";
 function Layout({ children }) {
   return (
     <React.Fragment>
-      <Container>
-        <Header />
-      </Container>
+      <Header />
+
       {children}
       <Container>
         <Footer />

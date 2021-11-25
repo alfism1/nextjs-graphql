@@ -110,8 +110,8 @@ export const getCategories = async () => {
         name
         slug
         boxColor {
-                hex
-              }
+          hex
+        }
       }
     }
   `
@@ -135,6 +135,9 @@ export const getPostDetails = async (slug) => {
           id
           name
           slug
+          boxColor {
+            hex
+          }
         }
         author {
           id
@@ -152,6 +155,7 @@ export const getPostDetails = async (slug) => {
         content {
           raw
         }
+        source
       }
     }
   `

@@ -29,6 +29,7 @@ function PostCardV1({
             height={500}
             layout="responsive"
             objectFit="cover"
+            alt={title}
           />
         ) : (
           <Image
@@ -36,6 +37,7 @@ function PostCardV1({
             width={440}
             height={293}
             layout="responsive"
+            alt={"Afsamu - Image not found"}
           />
         )}
       </div>

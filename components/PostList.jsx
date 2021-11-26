@@ -30,6 +30,7 @@ function PostItem({ imageSrc, title }) {
             width={"100%"}
             height={"100%"}
             layout="intrinsic"
+            alt={title}
           />
         ) : (
         <Image
@@ -38,6 +39,7 @@ function PostItem({ imageSrc, title }) {
           width={"100%"}
           height={"100%"}
           layout="intrinsic"
+          alt={"Afsamu - image not found"}
         />
         )}
       </div>

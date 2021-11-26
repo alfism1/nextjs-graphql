@@ -39,12 +39,12 @@ function Header() {
 
         <header className="px-0 flex items-center justify-between">
           <div className="flex flex-row items-center">
-            <button
+            <div role="button"
               onClick={handleMenuToggle}
               className="px-3 py-6 cursor-pointer"
             >
               <FaBars />
-            </button>
+            </div>
             <Link href="/">
               <div className="text-2xl cursor-pointer mx-5">
                 <b>AF</b>SAMU
@@ -72,12 +72,12 @@ function Header() {
           </div>
 
           <div className="flex items-center justify-center">
-            <button
+            <div role="button"
               onClick={handleSearchToggle}
               className="px-3 py-6 cursor-pointer"
             >
               <FaSearch />
-            </button>
+            </div>
           </div>
         </header>
       </Container>

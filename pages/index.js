@@ -12,8 +12,30 @@ function Home({ posts, nytimesPosts, nytimesViewedPosts }) {
   return (
     <React.Fragment>
       <Head>
-        <title>Super blog created by me</title>
+        <title>Afsamu, personal website built with modern tech stack</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content="Hello. I'm Alfi, a software Engineer. Here is my personal website that I create using up to date tech. This site built with NextJS as a Frontend, GraphCMS as the Content management, and GraphQL as the data communication." />
+        <meta name="robots" content="index, follow" />
+        <meta name="abstract" content="Not only personal web, you can find any interesting topic from world wide." />
+
+        <script type="application/ld+json">
+          {`{
+            "@context" : "https://schema.org/",
+            "@type": "Person",
+            "name": "Alfi Samudro Mulyo",
+            "image": "https://media-exp1.licdn.com/dms/image/C5103AQFd29ZeLU5K8g/profile-displayphoto-shrink_200_200/0/1560862454964?e=1643241600&v=beta&t=ftQot08lIY7rUye8d_skgZKMhekDwTLdFVPzozQc9kI",
+            "jobTitle": "Fullstack developer, Programmer, Software Engineer",
+            "url": "https://www.afsamu.com/",
+            "sameAs": [
+            "https://www.facebook.com/alfi.samudro/",
+            "https://www.linkedin.com/in/alfi-samudro-058b1910a/"
+            ],
+            "worksFor": {
+              "@type": "Organization",
+              "name": "Edgeprop Singapore"
+            }  
+          }`};
+        </script>
       </Head>
       <div className="py-8 bg-gray-100 border">
         <Container>
@@ -131,13 +153,13 @@ export async function getStaticProps() {
   try {
     const nytimes = await axios.get(
       "https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json?api-key=" +
-        process.env.NEXT_PUBLIC_NYTIMES_KEY
+      process.env.NEXT_PUBLIC_NYTIMES_KEY
     );
     const nytimesPosts = nytimes.data;
 
     const nytimesViewed = await axios.get(
       "https://api.nytimes.com/svc/mostpopular/v2/viewed/7.json?api-key=" +
-        process.env.NEXT_PUBLIC_NYTIMES_KEY
+      process.env.NEXT_PUBLIC_NYTIMES_KEY
     );
     const nytimesViewedPosts = nytimesViewed.data;
 

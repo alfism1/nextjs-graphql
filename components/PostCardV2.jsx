@@ -36,6 +36,7 @@ function PostCardV2({
               height={imageHeight}
               layout="responsive"
               objectFit="contain"
+              alt={title}
             />
           ) : (
             <Image
@@ -43,6 +44,7 @@ function PostCardV2({
               width={440}
               height={293}
               layout="responsive"
+              alt={"Afsamu - Image not found"}
             />
           )}
         </Href>

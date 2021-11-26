@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, CategoryBox } from "../";
+import AddThis from "./AddThis";
 import getContentRaw from "../Utils/BodyParser";
 import moment from "moment";
 import Image from "next/image";
-import Script from "next/script";
+
 
 function ArticleDetail({ post }) {
   const {
@@ -16,10 +17,6 @@ function ArticleDetail({ post }) {
     source,
     content,
   } = post;
-
-  const handleAddthis = () => {
-    window?.addthis.init();
-  };
 
   return (
     <React.Fragment>
@@ -52,20 +49,7 @@ function ArticleDetail({ post }) {
           <div className="pt-6">
             <div className="sticky top-20 text-xs">
               <div className="w-10">
-                <div
-                  data-addthis-url={`/post/${slug}`}
-                  data-addthis-title={title}
-                >
-                  <div>
-                    <div className="addthis_toolbox addthis_default_style addthis_32x32_style">
-                      <a className="addthis_button_whatsapp"></a>
-                      <a className="addthis_button_facebook"></a>
-                      <a className="addthis_button_twitter"></a>
-                      <a className="addthis_button_linkedin"></a>
-                      <a className="addthis_button_compact"></a>
-                    </div>
-                  </div>
-                </div>
+                <AddThis slug={slug} title={title} />
               </div>
             </div>
           </div>
@@ -95,11 +79,7 @@ function ArticleDetail({ post }) {
         ))}
       </Container>
 
-      <Script
-        type="text/javascript"
-        src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-617df1b6c0b1a19d"
-        onLoad={handleAddthis}
-      ></Script>
+      
     </React.Fragment>
   );
 }

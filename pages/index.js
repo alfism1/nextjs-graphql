@@ -18,24 +18,36 @@ function Home({ posts, nytimesPosts, nytimesViewedPosts }) {
         <meta name="robots" content="index, follow" />
         <meta name="abstract" content="Not only personal web, you can find any interesting topic from world wide." />
 
-        <script type="application/ld+json">
-          {`{
-            "@context" : "https://schema.org/",
-            "@type": "Person",
-            "name": "Alfi Samudro Mulyo",
-            "image": "https://media-exp1.licdn.com/dms/image/C5103AQFd29ZeLU5K8g/profile-displayphoto-shrink_200_200/0/1560862454964?e=1643241600&v=beta&t=ftQot08lIY7rUye8d_skgZKMhekDwTLdFVPzozQc9kI",
-            "jobTitle": "Fullstack developer, Programmer, Software Engineer",
-            "url": "https://www.afsamu.com/",
-            "sameAs": [
-            "https://www.facebook.com/alfi.samudro/",
-            "https://www.linkedin.com/in/alfi-samudro-058b1910a/"
-            ],
-            "worksFor": {
-              "@type": "Organization",
-              "name": "Edgeprop Singapore"
-            }  
-          }`};
-        </script>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "http://schema.org",
+              "@type": "Person",
+              name: "Alfi Samudro Mulyo",
+              image: "https://media-exp1.licdn.com/dms/image/C5103AQFd29ZeLU5K8g/profile-displayphoto-shrink_200_200/0/1560862454964?e=1643241600&v=beta&t=ftQot08lIY7rUye8d_skgZKMhekDwTLdFVPzozQc9kI",
+              jobTitle: "Fullstack developer, Programmer, Software Engineer",
+              url: "https://www.afsamu.com/",
+              sameAs: [
+                "https://www.facebook.com/alfi.samudro/",
+                "https://www.linkedin.com/in/alfi-samudro-058b1910a/"
+              ],
+              worksFor: {
+                "@type": "Organization",
+                "name": "Edgeprop Singapore"
+              },
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Malang",
+                addressRegion: "East Java",
+                postalCode: "65163",
+                streetAddress: "Wijaya Kusuma - Cepokomulyo - Kepanjen"
+              },
+              email: "mailto:alfialfarisi@gmail.com",
+              telephone: "(+62)82339803192)",
+            })
+          }}
+        />
       </Head>
       <div className="py-8 bg-gray-100 border">
         <Container>

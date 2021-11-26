@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaBars, FaSearch } from "react-icons/fa";
 import { Container } from "components/templates/"
-import { MobileMenu, SearchTop } from "components/organisms";
+import { SearchTop } from "components/molecules";
+import { MobileMenu } from "components/organisms";
 import { getCategories } from "../../../services/";
 import { useMediaQuery } from "react-responsive";
 

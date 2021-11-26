@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaBars, FaSearch } from "react-icons/fa";
-import { Container, MobileMenu, SearchTop } from "../components";
-import { getCategories } from "../services";
+import { Container } from "components/templates/"
+import { MobileMenu, SearchTop } from "components/organisms";
+import { getCategories } from "../../../services/";
 import { useMediaQuery } from "react-responsive";
 
 function Header() {
@@ -37,7 +38,7 @@ function Header() {
         )}
         <MobileMenu openMenu={openMenu} handleMenuToggle={handleMenuToggle} />
 
-        <header className="px-0 flex items-center justify-between">
+        <div className="px-0 flex items-center justify-between">
           <div className="flex flex-row items-center">
             <div role="button"
               onClick={handleMenuToggle}
@@ -79,7 +80,7 @@ function Header() {
               <FaSearch />
             </div>
           </div>
-        </header>
+        </div>
       </Container>
     </div>
   );

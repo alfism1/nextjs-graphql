@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion, useCycle } from "framer-motion";
 
 
+
 const variants = {
   open: { opacity: 1, x: 0 },
   closed: { opacity: 0, x: 0 },

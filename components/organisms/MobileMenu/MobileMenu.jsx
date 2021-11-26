@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaTimes } from "react-icons/fa";
 import axios from "axios";
-import checkNytimesMedia from "../components/Utils/Common"
+import checkNytimesMedia from "utils/CheckNytimesMedia"
 
-import { PostList, SocialMedia } from "../components";
+// import { PostList, SocialMedia } from "../components";
+import {PostList} from "components/molecules/"
+import {SocialMedia} from "components/atoms/"
 
 function MobileMenu({ openMenu, handleMenuToggle }) {
   const menus = [

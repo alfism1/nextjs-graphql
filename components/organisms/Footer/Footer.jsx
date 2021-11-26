@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaPaperPlane } from "react-icons/fa";
-import { SocialMedia } from "../components";
-import { getCategories } from "../services";
+import SocialMedia from "@/components/atoms/SocialMedia/SocialMedia";
+import { getCategories } from "../../../services/index";
 
 function FooterLabel({ label }) {
   return <h2 className="font-bold mb-3 md:mb-8 mt-3 md:mt-0">{label}</h2>;

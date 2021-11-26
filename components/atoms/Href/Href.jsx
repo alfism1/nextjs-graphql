@@ -9,7 +9,7 @@ function Href({ children, slug, originalUrl }) {
           <div className="cursor-pointer">{children}</div>
         </Link>
       ) : (
-        <a href={`${originalUrl}`} target="_blank">
+        <a href={`${originalUrl}`} target="_blank" rel="noreferrer noopener">
           {children}
         </a>
       )}

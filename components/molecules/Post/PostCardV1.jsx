@@ -1,8 +1,8 @@
 import React from "react";
-import Link from "next/link";
+// import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Href, CategoryBox } from "../components";
+import { Href, CategoryBox } from "components/atoms";
 
 function PostCardV1({
   title,

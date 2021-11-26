@@ -1,8 +1,12 @@
 import React from "react";
-import { Container, PostCardV1, PostCardV2, PostList, H1 } from "../components";
+// import { Container, PostCardV1, PostCardV2, PostList, H1 } from "../components";
+import Container from "components/templates/Container"
+import { PostCardV1, PostCardV2, PostList } from "components/molecules/"
+import { H1 } from "components/atoms/"
+
 import axios from "axios";
-import { getPosts } from "../services";
-import checkNytimesMedia from "../components/Utils/Common"
+import { getPosts } from "services/";
+import checkNytimesMedia from "utils/CheckNytimesMedia"
 import moment from "moment";
 import Head from "next/head"
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaInstagram, FaGithub } from "react-icons/fa";
 
 function SocialMedia({ data, style }) {
   return (
@@ -11,6 +11,7 @@ function SocialMedia({ data, style }) {
               {d.facebook && <FaFacebookF className="text-white" />}
               {d.twitter && <FaTwitter className="text-white" />}
               {d.instagram && <FaInstagram className="text-white" />}
+              {d.github && <FaGithub className="text-white" />}
             </button>
           </a>
         );

@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaTimes } from "react-icons/fa";
 import axios from "axios";
-import checkNytimesMedia from "utils/CheckNytimesMedia"
+import checkNytimesMedia from "utils/CheckNytimesMedia";
 
 // import { PostList, SocialMedia } from "../components";
-import {PostList} from "@/blog/components/molecules/"
-import {SocialMedia} from "@/blog/components/atoms/"
+import { PostList } from "@/blog/components/molecules/";
+import { SocialMedia } from "@/blog/components/atoms/";
 
 function MobileMenu({ openMenu, handleMenuToggle }) {
   const menus = [
@@ -70,9 +70,10 @@ function MobileMenu({ openMenu, handleMenuToggle }) {
         <SocialMedia
           style="mb-16"
           data={[
-            { facebook: true, link: "alfi.samudro" },
-            { twitter: true, link: "@lfisamudro" },
-            { instagram: true, link: "alfi.sm" },
+            { facebook: true, link: "https://www.facebook.com/alfi.samudro" },
+            { twitter: true, link: "https://twitter.com/lfisamudro" },
+            { instagram: true, link: "https://www.instagram.com/alfi.samudro" },
+            { github: true, link: "https://github.com/alfism1" },
           ]}
         />
       </div>

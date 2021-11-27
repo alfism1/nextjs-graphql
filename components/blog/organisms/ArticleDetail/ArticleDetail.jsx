@@ -73,12 +73,16 @@ function ArticleDetail({ post }) {
                     </React.Fragment>
                   );
                 })}
-                <span className="font-semibold block text-sm">Source(s):</span>
-                {source.map((s, i) => (
-                  <a key={i} className="dy kr text-sm" href={s}>
-                    {s}
-                  </a>
-                ))}
+                <div className="w-full">
+                  <span className="font-semibold block text-sm">
+                    Source(s):
+                  </span>
+                  {source.map((s, i) => (
+                    <a key={i} className="dy kr text-sm" href={s}>
+                      Click here
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

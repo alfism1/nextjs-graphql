@@ -92,6 +92,14 @@ export const getRecentPosts = async () => {
           width
           height
         }
+        category {
+          id
+          name
+          slug
+          boxColor {
+            hex
+          }
+        }
         createdAt
         slug
       }

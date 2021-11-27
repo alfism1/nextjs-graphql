@@ -1,15 +1,31 @@
 import React, { } from 'react';
-import { BlogLayout } from 'components/templates/'
-
 import 'tailwindcss/tailwind.css'
 import '../styles/global.scss'
 
-function MyApp({ Component, pageProps }) {
+import { withRouter } from 'next/router'
+import { BlogLayout, MainLayout } from 'components/templates/'
+
+const layouts = {
+  main: MainLayout,
+  blog: BlogLayout,
+}
+
+function MyApp({ Component, pageProps, router }) {
+  let Layout;
+  switch (router.pathname.split("/")[1]) {
+    case "blog":
+      Layout = layouts['blog']
+      break;
+  
+    default:
+      Layout = layouts['main']
+      break;
+  }
   return (
-    <BlogLayout>
+    <Layout>
       <Component {...pageProps} />
-    </BlogLayout>
+    </Layout>
   )
 }
 
-export default MyApp
+export default withRouter(MyApp)

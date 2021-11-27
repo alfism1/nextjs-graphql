@@ -1,0 +1,9 @@
+.category_link {
+  color: black;
+  background-color: white;
+  transition: all .2s;
+
+  &:hover {
+    transform: scale(1.1) rotate(10deg);
+  }
+}

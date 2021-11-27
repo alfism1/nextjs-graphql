@@ -11,8 +11,6 @@ import moment from "moment";
 import Head from "next/head"
 
 function HomeBlog({ posts, nytimesPosts, nytimesViewedPosts }) {
-
-
   return (
     <React.Fragment>
       <Head>

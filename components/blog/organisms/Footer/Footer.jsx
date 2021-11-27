@@ -25,7 +25,12 @@ function Footer() {
     getCategories().then((res) => {
       setCategories(res);
     });
-  }, [categories]);
+
+    // Prevent: Can't perform a React state update on an unmounted component. This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks in a useEffect cleanup function.
+    return () => {
+      setCategories([]);
+    }
+  }, []);
 
   return (
     <div className="border-t py-16 grid grid-cols-1 md:grid-cols-6 gap-6">

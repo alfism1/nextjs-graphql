@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import styles from "./Header.module.scss"
 import { FaBars, FaSearch } from "react-icons/fa";
 import { Container } from "components/templates/"
 import { SearchTop } from "@/blog/components/molecules";
@@ -47,23 +48,24 @@ function Header() {
             >
               <FaBars />
             </div>
-            <Link href="/">
-              <div className="text-2xl cursor-pointer mx-5">
+            <Link href="/blog">
+              <div className="text-2xl cursor-pointer mx-2 md:mx-5">
                 <b>AF</b>SAMU
+                <sub className="text-xs">blog</sub>
               </div>
             </Link>
 
             {!isTabletOrMobile && (
-              <div className="flex flex-row border-l">
+              <div className="flex flex-row gap-2">
                 {categories.map((c) => (
                   <Link key={c.name} href={`category/${c.slug}`}>
                     <a
                       style={{
-                        borderBottom: `3px solid ${
+                        border: `2px solid ${
                           c?.boxColor?.hex ? c.boxColor.hex : "gray"
                         }`,
                       }}
-                      className="p-4 cursor-pointer block border-b border-r"
+                      className={`cursor-pointer rounded-full px-3 py-1 text-sm text-black ${styles.category_link}`}
                     >
                       {c.name}
                     </a>

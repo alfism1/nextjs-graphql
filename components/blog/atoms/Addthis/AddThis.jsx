@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Script from "next/script";
+import styles from "./AddThis.module.scss"
 
 function AddThis({ slug, title }) {
   // const [s, setS] = useState("");
 
   useEffect(() => {
-    console.log(slug);
-    
-    window?.addthis?.update("share", "url", `/post/${slug}`);
+    window?.addthis?.update("share", "url", `blog/post/${slug}`);
     window?.addthis?.update("share", "title", title);
     window?.addthis?.layers?.refresh();
     window?.addthis?.toolbox('.addthis_toolbox'); // https://stackoverflow.com/questions/21718894/addthis-not-working-after-ajax-load
@@ -19,8 +18,8 @@ function AddThis({ slug, title }) {
 
   return (
     <React.Fragment>
-      <div data-addthis-url={`/post/${slug}`} data-addthis-title={title}>
-        <div className="addthis_toolbox addthis_default_style addthis_32x32_style">
+      <div data-addthis-url={`blog/post/${slug}`} data-addthis-title={title}>
+        <div className={`addthis_toolbox addthis_default_style addthis_32x32_style ${styles.addthis_custom_style}`}>
           <a className="addthis_button_whatsapp"></a>
           <a className="addthis_button_facebook"></a>
           <a className="addthis_button_twitter"></a>

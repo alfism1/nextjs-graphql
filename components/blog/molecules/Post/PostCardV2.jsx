@@ -9,6 +9,7 @@ function PostCardV2({
   slug,
   category,
   categorySlug,
+  categoryColor,
   imageSrc,
   imageWidth,
   imageHeight,
@@ -27,7 +28,7 @@ function PostCardV2({
         alt=""
         className="object-cover w-full h-50 md:h-full max-h-80"
       /> */}
-        <Href slug={`blog/post/${slug}`} originalUrl={originalUrl}>
+        <Href slug={slug && `/blog/post/${slug}`} originalUrl={originalUrl}>
           {imageSrc ? (
             <Image
               priority
@@ -48,23 +49,16 @@ function PostCardV2({
             />
           )}
         </Href>
-
         <div className="pb-6">
           <div className="my-4">
-            {categorySlug ? (
-              <Link href={categorySlug}>
-                <span className="uppercase cursor-pointer px-2 py-1 text-xs text-white bg-yellow-600 mr-2">
-                  {category}
-                </span>
-              </Link>
-            ) : (
-              <span className="uppercase px-2 py-1 text-xs text-white bg-yellow-600 mr-2">
-                {category}
-              </span>
-            )}
+            <CategoryBox
+              categorySlug={categorySlug}
+              categoryColor={categoryColor}
+              category={category}
+            />
             <span className="text-black text-xs p-2">{publishData}</span>
           </div>
-          <Href slug={`blog/post/${slug}`} originalUrl={originalUrl}>
+          <Href slug={`/blog/post/${slug}`} originalUrl={originalUrl}>
             <p className="text-black cursor-pointer hover:underline text-lg leading-6 font-semibold">
               {title}
             </p>

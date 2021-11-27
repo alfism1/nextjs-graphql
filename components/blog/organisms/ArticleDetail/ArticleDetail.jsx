@@ -1,7 +1,7 @@
 import React from "react";
-// import { Container, CategoryBox } from "../";
 import { Container } from "components/templates";
 import { AddThis, CategoryBox } from "@/blog/components/atoms";
+import { Sidebar } from "@/blog/components/organisms";
 import getContentRaw from "utils/BodyParser";
 import moment from "moment";
 import Image from "next/image";
@@ -45,8 +45,8 @@ function ArticleDetail({ post }) {
         </Container>
       </div>
       <Container>
-        <div className="grid grid-cols-12 gap-3">
-          <div className="col-span-12 md:col-span-9">
+        <div className="grid grid-cols-12 gap-6">
+          <div className="col-span-12 md:col-span-8">
             <div className="flex flex-row gap-2 justify-start">
               <div className="pt-6">
                 <div className="sticky top-20 text-xs">
@@ -55,7 +55,7 @@ function ArticleDetail({ post }) {
                   </div>
                 </div>
               </div>
-              <div className="py-6 text-sm leading-6">
+              <div className="py-6 text-sm leading-6 border-b md:border-b-0">
                 <div className="mb-8  shadow-lg">
                   <Image
                     priority
@@ -73,18 +73,19 @@ function ArticleDetail({ post }) {
                     </React.Fragment>
                   );
                 })}
+                <span className="font-semibold block text-sm">Source(s):</span>
+                {source.map((s, i) => (
+                  <a key={i} className="dy kr text-sm" href={s}>
+                    {s}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
-          <div className="col-span-12 md:col-span-3 pt-6">Sidebar is comming soon</div>
+          <div className="col-span-12 md:col-span-4 pt-6">
+            <Sidebar />
+          </div>
         </div>
-
-        <span className="font-semibold block text-sm">Source(s):</span>
-        {source.map((s, i) => (
-          <a key={i} className="dy kr text-sm" href={s}>
-            {s}
-          </a>
-        ))}
       </Container>
     </React.Fragment>
   );

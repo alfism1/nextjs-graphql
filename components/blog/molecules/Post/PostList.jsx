@@ -8,7 +8,11 @@ function PostList({ title, slug, imageSrc, originalUrl }) {
     <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 1.05 }}>
       {slug ? (
         <Link href={slug}>
-          <PostItem imageSrc={imageSrc} title={title} />
+          <div>
+            {" "}
+            {/* https://stackoverflow.com/a/69767229 */}
+            <PostItem imageSrc={imageSrc} title={title} />
+          </div>
         </Link>
       ) : (
         <a href={originalUrl} target="_blank">
@@ -33,14 +37,14 @@ function PostItem({ imageSrc, title }) {
             alt={title}
           />
         ) : (
-        <Image
-          className="object-cover"
-          src="https://media.graphcms.com/mL0rU7w1TiqGpppMVsKZ"
-          width={"100%"}
-          height={"100%"}
-          layout="intrinsic"
-          alt={"Afsamu - image not found"}
-        />
+          <Image
+            className="object-cover"
+            src="https://media.graphcms.com/mL0rU7w1TiqGpppMVsKZ"
+            width={"100%"}
+            height={"100%"}
+            layout="intrinsic"
+            alt={"Afsamu - image not found"}
+          />
         )}
       </div>
       <p className="ml-4 text-base leading-6 font-semibold hover:underline">

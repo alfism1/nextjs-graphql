@@ -41,7 +41,7 @@ function PostCardV1({
           />
         )}
       </div>
-      <Href slug={`blog/post/${slug}`} originalUrl={originalUrl}>
+      <Href slug={slug && `blog/post/${slug}`} originalUrl={originalUrl}>
         <div className="absolute bg-black h-full opacity-50 w-full bottom-0" />
       </Href>
       <div className="absolute bottom-0 pl-6 pb-6">
@@ -65,7 +65,7 @@ function PostCardV1({
 
           <span className="text-white text-xs p-2">{publishData}</span>
         </div>
-        <Href slug={`blog/post/${slug}`} originalUrl={originalUrl}>
+        <Href slug={slug && `blog/post/${slug}`} originalUrl={originalUrl}>
           <p className="text-white cursor-pointer hover:underline text-lg leading-6 font-semibold">
             {title}
           </p>

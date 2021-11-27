@@ -1,7 +1,7 @@
 import React from "react";
 // import { Container, CategoryBox } from "../";
 import { Container } from "components/templates";
-import { AddThis, CategoryBox } from "components/atoms";
+import { AddThis, CategoryBox } from "@/blog/components/atoms";
 import getContentRaw from "utils/BodyParser";
 import moment from "moment";
 import Image from "next/image";

@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Href, CategoryBox } from "components/atoms";
+import { Href, CategoryBox } from "@/blog/components/atoms";
 
 function PostCardV2({
   title,
@@ -27,7 +27,7 @@ function PostCardV2({
         alt=""
         className="object-cover w-full h-50 md:h-full max-h-80"
       /> */}
-        <Href slug={`/post/${slug}`} originalUrl={originalUrl}>
+        <Href slug={`blog/post/${slug}`} originalUrl={originalUrl}>
           {imageSrc ? (
             <Image
               priority
@@ -64,7 +64,7 @@ function PostCardV2({
             )}
             <span className="text-black text-xs p-2">{publishData}</span>
           </div>
-          <Href slug={`/post/${slug}`} originalUrl={originalUrl}>
+          <Href slug={`blog/post/${slug}`} originalUrl={originalUrl}>
             <p className="text-black cursor-pointer hover:underline text-lg leading-6 font-semibold">
               {title}
             </p>

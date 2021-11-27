@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { motion, useCycle } from "framer-motion";
-
-
+import { H1 } from "@/blog/components/atoms"
 
 const variants = {
   open: { opacity: 1, x: 0 },
@@ -21,6 +20,7 @@ function Playground() {
       >
         <div>My name is methos</div>
       </motion.div>
+      <H1>fdsa</H1>
     </div>
   );
 }

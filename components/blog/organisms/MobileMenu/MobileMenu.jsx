@@ -5,8 +5,8 @@ import axios from "axios";
 import checkNytimesMedia from "utils/CheckNytimesMedia"
 
 // import { PostList, SocialMedia } from "../components";
-import {PostList} from "components/molecules/"
-import {SocialMedia} from "components/atoms/"
+import {PostList} from "@/blog/components/molecules/"
+import {SocialMedia} from "@/blog/components/atoms/"
 
 function MobileMenu({ openMenu, handleMenuToggle }) {
   const menus = [

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 // import { ArticleDetail, Loader } from "../../components";
-import { Loader } from "components/atoms";
-import { ArticleDetail } from "components/organisms";
+import { Loader } from "@/blog/components/atoms";
+import { ArticleDetail } from "@/blog/components/organisms";
 import { getPostDetails, getPosts } from "services/";
 import { useRouter } from "next/router";
 import Head from "next/head"

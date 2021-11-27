@@ -1,5 +1,5 @@
 import React from "react";
-import { Header, Footer } from "components/organisms/";
+import { Header, Footer } from "@/blog/components/organisms/";
 import { Container } from "components/templates/";
 // import Container from "@/components/organisms/Container/Container";
 // import Footer from "@/components/organisms/Footer/Footer";

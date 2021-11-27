@@ -1,14 +1,14 @@
 import React, { } from 'react';
-import { Layout } from 'components/templates/'
+import { BlogLayout } from 'components/templates/'
 
 import 'tailwindcss/tailwind.css'
 import '../styles/global.scss'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
+    <BlogLayout>
       <Component {...pageProps} />
-    </Layout>
+    </BlogLayout>
   )
 }
 

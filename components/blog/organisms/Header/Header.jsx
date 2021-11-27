@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaBars, FaSearch } from "react-icons/fa";
 import { Container } from "components/templates/"
-import { SearchTop } from "components/molecules";
-import { MobileMenu } from "components/organisms";
-import { getCategories } from "../../../services/";
+import { SearchTop } from "@/blog/components/molecules";
+import { MobileMenu } from "@/blog/components/organisms";
+import { getCategories } from "@/services/index";
 import { useMediaQuery } from "react-responsive";
 
 function Header() {

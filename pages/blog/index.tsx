@@ -75,8 +75,8 @@ function HomeBlog({ posts, nytimesPosts, nytimesViewedPosts }: Props) {
                 title={post.node.title}
                 slug={post.node.slug}
                 category={post.node.category.name}
-                // categorySlug={post.node.category.slug}
-                // categoryColor={post.node.category.boxColor.hex}
+                categorySlug={post.node.category.slug}
+                categoryColor={post.node.category.boxColor.hex}
                 imageSrc={post.node.coverImage?.url}
                 publishData={moment(post.node.createdAt).format("MMM DD, YYYY")}
               />

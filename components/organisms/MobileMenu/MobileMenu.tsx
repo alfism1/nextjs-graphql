@@ -3,12 +3,18 @@ import Link from "next/link";
 import { FaTimes } from "react-icons/fa";
 import axios from "axios";
 import checkNytimesMedia from "../../../utils/CheckNytimesMedia";
+import { OriginalPostType } from "../../../types/post/Post";
 
 // import { PostList, SocialMedia } from "../components";
-import { PostList } from "../../molecules/";
-import { SocialMedia } from "../../atoms/";
+import { PostList } from "../../molecules";
+import { SocialMedia } from "../../atoms";
 
-function MobileMenu({ openMenu, handleMenuToggle }) {
+type Props = {
+  openMenu: boolean;
+  handleMenuToggle: React.MouseEventHandler<HTMLDivElement | HTMLButtonElement>;
+};
+
+function MobileMenu({ openMenu, handleMenuToggle }: Props) {
   const menus = [
     { name: "Home", link: "/" },
     { name: "About Us", link: "/" },
@@ -17,15 +23,18 @@ function MobileMenu({ openMenu, handleMenuToggle }) {
     { name: "Contacts", link: "/" },
   ];
 
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<OriginalPostType[]>([]);
 
-  useEffect(async () => {
-    const nytimesViewed = await axios.get(
-      "https://api.nytimes.com/svc/mostpopular/v2/viewed/7.json?api-key=" +
-        process.env.NEXT_PUBLIC_NYTIMES_KEY
-    );
-    const nytimesViewedPosts = nytimesViewed.data.results;
-    setPosts(nytimesViewedPosts.slice(0, 4));
+  useEffect(() => {
+    async () => {
+      const nytimesViewed = await axios.get(
+        "https://api.nytimes.com/svc/mostpopular/v2/viewed/7.json?api-key=" +
+          process.env.NEXT_PUBLIC_NYTIMES_KEY
+      );
+
+      const nytimesViewedPosts = await nytimesViewed.data.results;
+      setPosts(nytimesViewedPosts.slice(0, 4));
+    };
   }, []);
 
   return (

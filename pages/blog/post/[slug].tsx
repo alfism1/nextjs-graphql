@@ -4,15 +4,21 @@ import { Loader } from "../../../components/atoms";
 import { ArticleDetail } from "../../../components/organisms";
 import { getPostDetails, getPosts } from "../../../services";
 import { useRouter } from "next/router";
-import Head from "next/head"
+import Head from "next/head";
+import { DetailPostType, OriginalNodePostType } from "../../../types/post/Post";
+import { Params } from "next/dist/server/router";
 
-function PostDetails({ post }) {
+type Props = {
+  post: DetailPostType;
+};
+
+function PostDetails({ post }: Props) {
   const router = useRouter();
-  const [origin, setOrigin] = useState();
+  const [origin, setOrigin] = useState<string>();
 
   useEffect(() => {
     setOrigin(window.location.origin);
-  }, [])
+  }, []);
 
   if (router.isFallback) {
     return <Loader />;
@@ -44,7 +50,7 @@ function PostDetails({ post }) {
 }
 export default PostDetails;
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: Params) {
   const data = await getPostDetails(params.slug);
 
   return {
@@ -56,7 +62,14 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   const posts = await getPosts();
   return {
-    paths: posts.map(({ node: { slug } }) => ({ params: { slug } })),
+    // paths: posts.map(({ node: { slug } }) => ({ params: { slug } })),
+    paths: posts.map((post: OriginalNodePostType) => {
+      return {
+        params: {
+          slug: post.node.slug,
+        },
+      };
+    }),
     fallback: true,
   };
 }

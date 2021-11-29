@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import {
-  PostsWidgetV1,
-  PostsWidgetV2,
-} from "../../molecules/index";
+import { PostsWidgetV1, PostsWidgetV2 } from "../../molecules/index";
 import { getRecentPosts } from "../../../services/index";
+import { OriginalPostType } from "../../../types/post/Post";
 
 function Sidebar() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<OriginalPostType[]>([]);
 
   useEffect(() => {
     getRecentPosts().then((res) => {

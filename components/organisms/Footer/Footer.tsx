@@ -3,12 +3,18 @@ import Link from "next/link";
 import { FaPaperPlane } from "react-icons/fa";
 import { SocialMedia } from "../../atoms";
 import { getCategories } from "../../../services/index";
+import { CategoryType } from "../../../types/post/Post";
 
-function FooterLabel({ label }) {
+type Props = {
+  label?: string;
+  href: string;
+}
+
+function FooterLabel({ label }: Props) {
   return <h2 className="font-bold mb-3 md:mb-8 mt-3 md:mt-0">{label}</h2>;
 }
 
-function FooterLink({ href, label }) {
+function FooterLink({ href, label }: Props) {
   return (
     <Link href={href}>
       <a className="cursor-pointer block text-sm font-normal text-gray-500 py-1">
@@ -19,7 +25,7 @@ function FooterLink({ href, label }) {
 }
 
 function Footer() {
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<CategoryType[]>([]);
 
   useEffect(() => {
     getCategories().then((res) => {
@@ -51,19 +57,19 @@ function Footer() {
         </span>
       </div>
       <div className="col-span-full md:col-span-1">
-        <FooterLabel label="About Us" />
+        <FooterLabel href="/" label="About Us" />
         <FooterLink href="/" label="About Us" />
         <FooterLink href="/" label="Join Us" />
         <FooterLink href="/" label="Contact Us" />
       </div>
       <div className="col-span-full md:col-span-1">
-        <FooterLabel label="Categories" />
+        <FooterLabel href="/" label="Categories" />
         {categories.map((c) => (
           <FooterLink key={c.name} href={c.slug} label={c.name} />
         ))}
       </div>
       <div className="col-span-full md:col-span-2">
-        <FooterLabel label="Join Our Newsletter" />
+        <FooterLabel href="" label="Join Our Newsletter" />
         <div className="border flex items-center justify-between">
           <input
             className="outline-none focus:outline-none w-full h-8 text-sm px-3"

@@ -1,4 +1,4 @@
-type CategoryType = {
+export type CategoryType = {
   name: string;
   slug: string;
   boxColor: any;
@@ -10,17 +10,29 @@ type ImageType = {
   height: number;
 };
 
+type Author = {
+  name: string;
+  picture: ImageType;
+};
+
 export type OriginalPostType = {
   title: string;
-  slug?: string;
+  slug: string;
   category: CategoryType;
-  coverImage?: ImageType;
+  coverImage: ImageType;
   publishData: string;
   createdAt: string;
 };
 
 export type OriginalNodePostType = {
   node: OriginalPostType;
+};
+
+export type DetailPostType = OriginalPostType & {
+  author: Author;
+  source: string[];
+  content: any;
+  excerpt?: string;
 };
 
 type NytimesType = {

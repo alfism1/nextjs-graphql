@@ -1,12 +1,17 @@
 import React from "react";
 import { Container } from "../../templates";
 import { AddThis, CategoryBox } from "../../atoms";
-import { Sidebar } from "../../organisms";
+import { Sidebar } from "..";
 import getContentRaw from "../../../utils/BodyParser";
 import moment from "moment";
 import Image from "next/image";
+import { DetailPostType } from "../../../types/post/Post";
 
-function ArticleDetail({ post }) {
+type Props = {
+  post: DetailPostType
+}
+
+function ArticleDetail({ post }: Props) {
   const {
     title,
     slug,
@@ -66,7 +71,7 @@ function ArticleDetail({ post }) {
                     layout="responsive"
                   />
                 </div>
-                {content.raw.children.map((item, index) => {
+                {content.raw.children.map((item: any, index: number) => {
                   return (
                     <React.Fragment key={index}>
                       {getContentRaw(item, item.type)}
@@ -77,7 +82,7 @@ function ArticleDetail({ post }) {
                   <span className="font-semibold block text-sm">
                     Source(s):
                   </span>
-                  {source.map((s, i) => (
+                  {source.map((s:string, i: number) => (
                     <a key={i} className="dy kr text-sm" href={s}>
                       Click here
                     </a>

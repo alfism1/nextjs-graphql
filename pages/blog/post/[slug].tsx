@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 // import { ArticleDetail, Loader } from "../../components";
-import { Loader } from "../../../components/atoms";
-import { ArticleDetail } from "../../../components/organisms";
+import { Loader } from "../../../components/blog/atoms";
+import { ArticleDetail } from "../../../components/blog/organisms";
 import { getPostDetails, getPosts } from "../../../services";
 import { useRouter } from "next/router";
 import Head from "next/head";

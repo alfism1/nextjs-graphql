@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import styles from "./Header.module.scss"
 import { FaBars, FaSearch } from "react-icons/fa";
-import { Container } from "../../templates"
+import { Container } from "../../../templates"
 import { SearchTop } from "../../molecules";
 import { MobileMenu } from "..";
-import { getCategories } from "../../../services/index";
+import { getCategories } from "../../../../services/index";
 import { useMediaQuery } from "react-responsive";
-import { CategoryType } from "../../../types/post/Post";
+import { CategoryType } from "../../../../types/post/Post";
 
 function Header() {
   const [openMenu, setOpenMenu] = useState<boolean>(false);

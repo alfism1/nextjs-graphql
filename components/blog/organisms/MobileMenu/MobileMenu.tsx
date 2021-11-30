@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaTimes } from "react-icons/fa";
 import axios from "axios";
-import checkNytimesMedia from "../../../utils/CheckNytimesMedia";
-import { OriginalPostType } from "../../../types/post/Post";
+import checkNytimesMedia from "../../../../utils/CheckNytimesMedia";
+import { OriginalPostType } from "../../../../types/post/Post";
 
 // import { PostList, SocialMedia } from "../components";
 import { PostList } from "../../molecules";

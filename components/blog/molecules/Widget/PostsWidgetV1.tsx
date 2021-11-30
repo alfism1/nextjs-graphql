@@ -1,7 +1,7 @@
 import React from "react";
 import { H2 } from "../../atoms";
 import { PostList } from "../index";
-import { OriginalPostType } from "../../../types/post/Post";
+import { OriginalPostType } from "../../../../types/post/Post";
 
 type Props = {
   title: string;

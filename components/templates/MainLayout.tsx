@@ -1,13 +1,28 @@
-import React from "react";
-import Link from "next/link";
+import React, { ReactNode } from "react";
+import Head from "next/head";
+import { Header } from "../main_home/";
 
-function MainLayout() {
+type Props = {
+  children: ReactNode;
+};
+
+function MainLayout({ children }: Props) {
   return (
-    <div className="flex h-screen flex-col justify-center items-center">
-      <h1>Under maintenancde!</h1>
-      <Link href="/blog">
-        <div className="block bg-green-200 rounded-full border-2 border-green-500 px-3 py-1 mt-3 transition-all duration-150 hover:scale-110" role="button">Click here</div>
-      </Link>
+    <div>
+      <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin=""
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      <Header />
+      {children}
     </div>
   );
 }

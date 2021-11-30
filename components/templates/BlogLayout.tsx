@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { Header, Footer } from "../organisms";
+import { Header, Footer } from "../blog/organisms";
 import Container from "./Container";
 
 type Props = {

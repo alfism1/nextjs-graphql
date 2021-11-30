@@ -1,8 +1,8 @@
 import React from "react";
 // import { Container, PostCardV1, PostCardV2, PostList, H1 } from "../components";
 import Container from "../../components/templates/Container";
-import { PostCardV1, PostCardV2, PostList } from "../../components//molecules/";
-import { H1 } from "../../components//atoms/";
+import { PostCardV1, PostCardV2, PostList } from "../../components/blog/molecules/";
+import { H1 } from "../../components/blog/atoms/";
 
 import axios from "axios";
 import { getPosts } from "../../services/index";
@@ -21,11 +21,11 @@ function HomeBlog({ posts, nytimesPosts, nytimesViewedPosts }: Props) {
   return (
     <React.Fragment>
       <Head>
-        <title>Afsamu, personal website built with modern tech stack</title>
+        <title>Afsamu - Blog</title>
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
-          content="Hello. I'm Alfi, a software Engineer. Here is my personal website that I create using up to date tech. This site built with NextJS as a Frontend, GraphCMS as the Content management, and GraphQL as the data communication."
+          content="Blog built with NextJS as a Frontend, GraphCMS as the Content management, and GraphQL as the data communication."
         />
         <meta name="robots" content="index, follow" />
         <meta

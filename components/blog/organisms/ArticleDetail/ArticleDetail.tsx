@@ -1,11 +1,11 @@
 import React from "react";
-import { Container } from "../../templates";
+import { Container } from "../../../templates";
 import { AddThis, CategoryBox } from "../../atoms";
 import { Sidebar } from "..";
-import getContentRaw from "../../../utils/BodyParser";
+import getContentRaw from "../../../../utils/BodyParser";
 import moment from "moment";
 import Image from "next/image";
-import { DetailPostType } from "../../../types/post/Post";
+import { DetailPostType } from "../../../../types/post/Post";
 
 type Props = {
   post: DetailPostType

@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 import { H2 } from "../../atoms";
 import { PostCardV2 } from "..";
-import { OriginalPostType } from "../../../types/post/Post";
+import { OriginalPostType } from "../../../../types/post/Post";
 
 type Props = {
   title: string;

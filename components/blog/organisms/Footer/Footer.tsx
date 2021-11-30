@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaPaperPlane } from "react-icons/fa";
 import { SocialMedia } from "../../atoms";
-import { getCategories } from "../../../services/index";
-import { CategoryType } from "../../../types/post/Post";
+import { getCategories } from "../../../../services/index";
+import { CategoryType } from "../../../../types/post/Post";
 
 type Props = {
   label?: string;

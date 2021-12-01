@@ -52,7 +52,7 @@ function Home() {
         />
       </Head>
 
-      <div className="main_home w-screen h-screen">
+      <div className="main_home">
         <Container>
           <Intro />
         </Container>

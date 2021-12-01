@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { init } from "ityped";
-import Link from "next/link"
+import Card from "../reusable/Card";
 
 function Intro() {
   const textRef = useRef();
@@ -31,15 +31,33 @@ function Intro() {
         This site built with: <br />
         <span className="font-bold" ref={textRef} />
       </p>
-      <p className="mt-8 text-center">Site is under development.</p>
-      <Link href="/blog">
-        <div
-          role="button"
-          className="p-2 text-center mt-3 mx-auto cursor-pointer rounded-full bg-green-200 border-2 border-green-500 w-40 transition-all duration-150 hover:scale-110"
-        >
-          Click here!
-        </div>
-      </Link>
+      <p className="mt-8 mb-5 text-center font-bold">Check my portfolios</p>
+      <div className="grid grid-cols-12 gap-0 md:gap-6 gap-y-6 w-full">
+        <Card
+          title="Built-in Blog"
+          tag="Original"
+          color="green"
+          description="a simple Blog in this project which created using Typescript as the FE code, GraphCMS for content management, GraphQL for data communication, AddThis for share button"
+          project_slug="/blog"
+          github_url="https://github.com/alfism1/nextjs-graphql/tree/master/pages/blog"
+        />
+        <Card
+          title="Amazon Clone"
+          tag="Clone"
+          color="red"
+          description="Superb amazon clone. Fully functionality, Fully responsive. Built with React JS, firebase, use Stripe for the payment gateway"
+          project_slug="https://challenge-c05bd.web.app/"
+          github_url="https://github.com/alfism1/nextjs-graphql/tree/master/pages/blog"
+        />
+        <Card
+          title="Starbucks Clone"
+          tag="Clone"
+          description="Starbuck landing page clone. Built in this project using Next JS and tailwindcss for styling. All assets belongs to https://www.starbucks.com/"
+          project_slug="https://challenge-c05bd.web.app/"
+          github_url="https://github.com/alfism1/nextjs-graphql/tree/master/pages/blog"
+          ongoing={true}
+        />
+      </div>
     </div>
   );
 }

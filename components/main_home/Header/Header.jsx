@@ -1,10 +1,15 @@
+<<<<<<< HEAD
 import React, { useEffect, useRef, useState } from "react";
+=======
+import React, { useState } from "react";
+>>>>>>> e9e441c1c2c7798e32903f5af7f36cde6b7bc29a
 import Link from "next/link";
 import styles from "./Header.module.scss";
 import { Container } from "../../templates";
 
 function Header() {
   const [openMenu, setOpenMenu] = useState(false);
+<<<<<<< HEAD
 
   const navRef = useRef();
   
@@ -29,6 +34,13 @@ function Header() {
             onClick={handleOpenMenu}
             className={`${styles.nav} cursor-pointer p-2 rounded-full active:bg-gray-700 transition-all duration-100`}
           >
+=======
+  return (
+    <header className="bg-gray-800 py-3 sticky top-0">
+      <Container>
+        <div className="flex flex-row items-center gap-3">
+          <div onClick={() => {setOpenMenu(!openMenu)}} className={`${styles.nav} ${openMenu ? styles.active : styles.noactive} cursor-pointer p-2 rounded-full active:bg-gray-700 transition-all duration-100`}>
+>>>>>>> e9e441c1c2c7798e32903f5af7f36cde6b7bc29a
             <div role="button" className={`${styles.hamburger}`}>
               <span />
               <span />

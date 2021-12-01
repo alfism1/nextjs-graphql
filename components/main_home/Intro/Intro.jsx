@@ -1,6 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import { init } from "ityped";
+<<<<<<< HEAD
 import Card from "../reusable/Card";
+=======
+import Link from "next/link"
+>>>>>>> e9e441c1c2c7798e32903f5af7f36cde6b7bc29a
 
 function Intro() {
   const textRef = useRef();

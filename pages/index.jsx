@@ -52,7 +52,11 @@ function Home() {
         />
       </Head>
 
+<<<<<<< HEAD
       <div className="main_home">
+=======
+      <div className="main_home w-screen h-screen">
+>>>>>>> e9e441c1c2c7798e32903f5af7f36cde6b7bc29a
         <Container>
           <Intro />
         </Container>

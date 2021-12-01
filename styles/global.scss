@@ -44,6 +44,14 @@ body {
   }
 }
 
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 .react-multi-carousel-list {
   & .arrow-btn {
     transition: width 300ms ease;

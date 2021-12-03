@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./MobileMenu.module.scss";
 import { FaChevronRight, FaMapMarkerAlt } from "react-icons/fa";
+import SubMenu from "./SubMenu";
 
 function MobileMenu({ open }) {
+  const [openSubMenu, setOpenSubMenu] = useState(false);
+
+  const handleOpenSubMenu = () => {
+    setOpenSubMenu(!openSubMenu);
+  };
+
+  useEffect(() => {
+    if (!open) setOpenSubMenu(false);
+  }, [open]);
+
   return (
     <>
       <div
@@ -17,7 +28,7 @@ function MobileMenu({ open }) {
         }`}
       >
         <ul className={`border-b pb-8 ${styles.menu_ul}`}>
-          <li>
+          <li onClick={handleOpenSubMenu}>
             <button>Menu</button>
             <FaChevronRight />
           </li>
@@ -41,6 +52,8 @@ function MobileMenu({ open }) {
           <span className="text-sm font-bold ml-3">Find a store</span>
         </div>
       </div>
+
+      <SubMenu open={openSubMenu} handleOpenSubMenu={handleOpenSubMenu} />
     </>
   );
 }

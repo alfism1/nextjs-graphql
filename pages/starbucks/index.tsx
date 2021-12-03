@@ -55,7 +55,7 @@ const sectionData = [
     main_title: "Earning 4,500 Bonus Stars is Super Starifying",
     description:
       "Earn more Stars and even more Rewards with a $0 intro annual fee for your first year with the Starbucks® Rewards Visa® Card. Plus your Stars won’t expire – an exclusive Starbucks benefit for cardmembers. Now that’s Super Starifying.",
-    button_title: "Cast your vote",
+    button_title: "Learn more",
     bg_color: "#d4e9e2",
     text_color: "#1e3932",
     custom_title_styling: {
@@ -87,7 +87,7 @@ function HomeStarbucks() {
         />
       ))}
 
-      <div className="text-xs leading-6 font-semibold text-center p-8">
+      <div className="text-xs leading-6 font-semibold text-center p-8 border-b-2">
         *NO PURCHASE NECESSARY. Participating stores only. Starbucks employees
         are not eligible to win prizes. Ends 1/3/22. To play and for Official
         Rules, visit starbucksforlife.com. Entrants can receive a maximum of 2

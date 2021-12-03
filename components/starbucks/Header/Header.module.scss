@@ -1,0 +1,113 @@
+.header {
+  height: 72px;
+
+  $animationDuration: 0.3s;
+  .nav {
+    .hamburger {
+      width: 21px;
+      height: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+
+      span {
+        width: 100%;
+        height: 2px;
+        background-color: rgba(0, 0, 0, 0.58);
+        transform-origin: left;
+        transition: all 0.5s ease;
+      }
+    }
+
+    &.noactive {
+      .hamburger {
+        span {
+          &:first-child {
+            position: relative;
+            animation-name: initialfirstchild;
+            animation-duration: $animationDuration;
+            animation-fill-mode: forwards;
+          }
+          &:nth-child(2) {
+            opacity: 1;
+          }
+          &:last-child {
+            position: relative;
+            animation-name: initiallastchild;
+            animation-duration: $animationDuration;
+            animation-fill-mode: forwards;
+          }
+
+          @keyframes initialfirstchild {
+            0% {
+              transform: translate(3px) rotate(45deg);
+            }
+            50% {
+              transform: translateY(8px);
+            }
+            100% {
+              transform: translateY(0px) rotate(0deg);
+            }
+          }
+          @keyframes initiallastchild {
+            0% {
+              transform: translate(4px, 2px) rotate(-45deg);
+            }
+            50% {
+              transform: translateY(-8px);
+            }
+            100% {
+              transform: translateY(0px);
+            }
+          }
+        }
+      }
+    }
+
+    &.active {
+      .hamburger {
+        span {
+          &:first-child {
+            position: relative;
+            animation-name: firstchild;
+            animation-duration: $animationDuration;
+            animation-fill-mode: forwards;
+          }
+          &:nth-child(2) {
+            opacity: 0;
+          }
+          &:last-child {
+            position: relative;
+            animation-name: lastchild;
+            animation-duration: $animationDuration;
+            animation-fill-mode: forwards;
+          }
+
+          @keyframes firstchild {
+            0% {
+              transform: translateY(0px);
+            }
+            50% {
+              transform: translateY(8px);
+            }
+            100% {
+              transform: translate(3px) rotate(45deg);
+            }
+          }
+          @keyframes lastchild {
+            0% {
+              transform: translateY(0px);
+            }
+            50% {
+              transform: translateY(-8px);
+            }
+            100% {
+              transform: translate(3px, 2px) rotate(-45deg);
+            }
+          }
+        }
+      }
+    }
+  }
+}

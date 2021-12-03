@@ -1,0 +1,40 @@
+.block_black {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+
+  &.active {
+    visibility: visible;
+    opacity: 0.4;
+  }
+}
+
+.mobile_menu {
+  position: fixed;
+  right: -80vw;
+  top: 72px;
+  width: 80vw;
+  height: calc(100vh - 72px);
+  transition: all 0.3s ease-in;
+
+  &.active {
+    right: 0;
+  }
+
+  .menu_ul {
+    li {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      button {
+        font-size: larger;
+        padding: 13px 0;
+        display: block;
+        width: 100%;
+        text-align: left;
+      }
+    }
+  }
+}

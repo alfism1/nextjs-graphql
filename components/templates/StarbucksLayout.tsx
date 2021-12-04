@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import Head from "next/head";
-import { Header } from "../starbucks/";
+import { Header, Footer } from "../starbucks/";
 
 type Props = {
   children: ReactNode;
@@ -8,10 +8,11 @@ type Props = {
 
 function StarbucksLayout({ children }: Props) {
   return (
-    <div>
+    <React.Fragment>
       <Header />
       {children}
-    </div>
+      <Footer />
+    </React.Fragment>
   );
 }
 

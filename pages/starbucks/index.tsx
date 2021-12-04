@@ -16,6 +16,7 @@ const sectionData = [
     text_color: "#1e3932",
     img_src:
       "https://content-prod-live.cert.starbucks.com/binary/v2/asset/137-75548.png",
+    reverse: true,
   },
   {
     main_title: "BRULÉE BLISS",
@@ -25,6 +26,7 @@ const sectionData = [
     bg_color: "#d50032",
     img_src:
       "https://content-prod-live.cert.starbucks.com/binary/v2/asset/137-75549.png",
+    reverse: true,
   },
   {
     main_title: "CHILL AND BE MERRY",
@@ -50,6 +52,7 @@ const sectionData = [
     },
     img_src:
       "https://content-prod-live.cert.starbucks.com/binary/v2/asset/137-75550.jpg",
+    reverse: true,
   },
   {
     main_title: "Earning 4,500 Bonus Stars is Super Starifying",
@@ -72,7 +75,7 @@ const sectionData = [
 
 function HomeStarbucks() {
   return (
-    <div>
+    <div className="container mx-auto">
       {sectionData.map((section, index) => (
         <Section
           key={index}
@@ -84,10 +87,11 @@ function HomeStarbucks() {
           img_src={section?.img_src}
           custom_title_styling={section?.custom_title_styling}
           custom_desc_styling={section?.custom_desc_styling}
+          reverse={section?.reverse}
         />
       ))}
 
-      <div className="text-xs leading-6 font-semibold text-center p-8 border-b-2">
+      <div className="text-xs leading-6 font-semibold text-center p-8 md:w-2/3 mx-auto">
         *NO PURCHASE NECESSARY. Participating stores only. Starbucks employees
         are not eligible to win prizes. Ends 1/3/22. To play and for Official
         Rules, visit starbucksforlife.com. Entrants can receive a maximum of 2

@@ -54,7 +54,7 @@ function Intro() {
           tag="Clone"
           description="Starbuck landing page clone. Built in this project using Next JS and tailwindcss for styling. All assets belongs to https://www.starbucks.com/"
           project_slug="/starbucks"
-          github_url="https://github.com/alfism1/nextjs-graphql/tree/master/pages/blog"
+          github_url="https://github.com/alfism1/nextjs-graphql/tree/starbucks"
         />
       </div>
     </div>

@@ -47,14 +47,22 @@ function Intro() {
           color="red"
           description="Superb amazon clone. Fully functionality, Fully responsive. Built with React JS, firebase, use Stripe for the payment gateway"
           project_slug="https://challenge-c05bd.web.app/"
-          github_url="https://github.com/alfism1/nextjs-graphql/tree/master/pages/blog"
+          github_url="https://github.com/alfism1/amazon-clone"
         />
         <Card
           title="Starbucks Clone"
           tag="Clone"
-          description="Starbuck landing page clone. Built in this project using Next JS and tailwindcss for styling. All assets belongs to https://www.starbucks.com/"
+          color="red"
+          description="Starbuck landing page clone. Built in this project using Next JS and tailwindcss for styling. All assets belongs to starbucks.com"
           project_slug="/starbucks"
           github_url="https://github.com/alfism1/nextjs-graphql/tree/starbucks"
+        />
+        <Card
+          title="Netflix Clone"
+          tag="Clone"
+          description="Netflix fully feature clone. Using pure React JS, react router 6, styled components, firebase with fully feature such as login, sign up, auth checking, and many more."
+          project_slug="#"
+          github_url=""
         />
       </div>
     </div>

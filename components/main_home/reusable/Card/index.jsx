@@ -11,12 +11,44 @@ function Card({
   color,
   ongoing,
 }) {
+  const colorTheme = {
+    green: {
+      border: "border-green-500",
+      bg: "bg-green-200",
+      bg_hover: "bg-green-300",
+    },
+    red: {
+      border: "border-red-500",
+      bg: "bg-red-200",
+      bg_hover: "bg-red-300",
+    },
+    gray: {
+      border: "border-gray-500",
+      bg: "bg-gray-200",
+      bg_hover: "bg-gray-300",
+    },
+  };
+
+  let colorTemplate;
+  switch (color) {
+    case "red":
+      colorTemplate = colorTheme.red;
+      break;
+    case "green":
+      colorTemplate = colorTheme.green;
+      break;
+
+    default:
+      colorTemplate = colorTheme.gray;
+      break;
+  }
+
   return (
     <div className="col-span-12 relative md:col-span-4 border bg-white shadow-xl rounded-md px-4 pt-2 pb-14 md:w-70 hover:scale-105 transition-transform duration-200">
       <div className="flex items-start justify-between pb-2 mb-2 border-b">
         <h2 className="font-semibold">{title}</h2>
         <div
-          className={`font-semibold lowercase px-3 border border-${color}-500 rounded-md`}
+          className={`font-semibold lowercase px-3 border ${colorTemplate.border} rounded-md`}
         >
           {tag}
         </div>
@@ -36,7 +68,7 @@ function Card({
               <Link href={project_slug}>
                 <div
                   role="button"
-                  className={`text-center leading-7 w-36 mt-3 mb-2 cursor-pointer bg-${color}-200 border border-${color}-500 transition-all duration-150 hover:bg-${color}-300`}
+                  className={`text-center leading-7 w-36 mt-3 mb-2 cursor-pointer ${colorTemplate.bg} ${colorTemplate.border} transition-all duration-150 hover:${colorTemplate.bg_hover}`}
                 >
                   Click here!
                 </div>

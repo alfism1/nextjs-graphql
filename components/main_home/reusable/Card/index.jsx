@@ -15,17 +15,17 @@ function Card({
     green: {
       border: "border-green-500",
       bg: "bg-green-200",
-      bg_hover: "bg-green-300",
+      bg_hover: "hover:bg-green-300",
     },
     red: {
       border: "border-red-500",
       bg: "bg-red-200",
-      bg_hover: "bg-red-300",
+      bg_hover: "hover:bg-red-300",
     },
     gray: {
       border: "border-gray-500",
       bg: "bg-gray-200",
-      bg_hover: "bg-gray-300",
+      bg_hover: "hover:bg-gray-300",
     },
   };
 
@@ -68,7 +68,7 @@ function Card({
               <Link href={project_slug}>
                 <div
                   role="button"
-                  className={`text-center leading-7 w-36 mt-3 mb-2 cursor-pointer ${colorTemplate.bg} ${colorTemplate.border} transition-all duration-150 hover:${colorTemplate.bg_hover}`}
+                  className={`text-center leading-7 w-36 mt-3 mb-2 cursor-pointer ${colorTemplate.bg} ${colorTemplate.border} transition-all duration-150 ${colorTemplate.bg_hover}`}
                 >
                   Click here!
                 </div>

@@ -61,8 +61,7 @@ function Intro() {
           title="Netflix Clone"
           tag="Clone"
           description="Netflix fully feature clone. Using pure React JS, react router 6, styled components, firebase with fully feature such as login, sign up, auth checking, and many more."
-          project_slug="#"
-          github_url=""
+          ongoing
         />
       </div>
     </div>

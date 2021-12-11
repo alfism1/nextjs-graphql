@@ -60,8 +60,10 @@ function Intro() {
         <Card
           title="Netflix Clone"
           tag="Clone"
+          color="green"
           description="Netflix fully feature clone. Using pure React JS, react router 6, styled components, firebase with fully feature such as login, sign up, auth checking, and many more."
-          ongoing
+          project_slug="https://netflix-clone-55021.web.app"
+          github_url="https://github.com/alfism1/netflix-clone"
         />
       </div>
     </div>

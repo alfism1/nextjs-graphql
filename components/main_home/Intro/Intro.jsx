@@ -21,11 +21,11 @@ function Intro() {
   }, []);
   return (
     <div className="py-4">
-      Hello there, it's me,
-      <h1 className="font-bold text-2xl my-1">Alfi Samudro Mulyo,</h1>a Software
-      Engineer.
+      Hello there, it's me
+      <h1 className="font-bold text-2xl my-1">Alfi Samudro Mulyo</h1>a Software
+      Engineer
       <p className="mt-6">
-        Here is my playground to explore any new tech stack.
+        Here is my playground to explore any new tech stack
       </p>
       <p className="mt-6">
         This site built with: <br />
@@ -62,7 +62,7 @@ function Intro() {
           tag="Clone"
           color="green"
           description="Netflix fully feature clone. Using pure React JS, react router 6, styled components, firebase with fully feature such as login, sign up, auth checking, and many more."
-          project_slug="https://netflix-clone-55021.web.app"
+          project_slug="https://netflix-clone-55021.firebaseapp.com/"
           github_url="https://github.com/alfism1/netflix-clone"
         />
       </div>

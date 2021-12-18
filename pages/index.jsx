@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import { Intro } from "../components/main_home";
 import { Container } from "../components/templates/index";
-import Counter from "../features/counter/Counter"
+import { connect } from "react-redux";
+import { setInfo } from "../redux/actions/main";
+// import Counter from "../features/counter/Counter"
 
-function Home() {
+function Home({ name, setInfo }) {
+  const [newName, setName] = useState("");
   return (
     <React.Fragment>
       <Head>
@@ -56,11 +59,28 @@ function Home() {
       <div className="main_home">
         <Container>
           <Intro />
-          <Counter />
+          <>
+            <p>Enter a Name {name}:</p>
+            <input
+              type="text"
+              value={newName}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <button onClick={() => setInfo(newName)}>Submit</button>
+            {/* <Counter /> */}
+          </>
         </Container>
       </div>
     </React.Fragment>
   );
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  return { name: state.main.name };
+};
+
+const mapDispatchToProps = {
+  setInfo,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

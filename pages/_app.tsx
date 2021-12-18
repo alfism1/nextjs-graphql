@@ -1,41 +1,47 @@
-import React, { } from 'react';
-import 'tailwindcss/tailwind.css'
-import '../styles/global.scss'
-import type { AppProps } from 'next/app'
+import React from "react";
+import "tailwindcss/tailwind.css";
+import "../styles/global.scss";
+import type { AppProps } from "next/app";
 
-import { Provider } from 'react-redux'
-import store from '../app/store'
+// import { Provider } from 'react-redux'
+// import store from '../example_app/store'
 
-import { withRouter } from 'next/router'
-import { BlogLayout, MainLayout, StarbucksLayout } from "../components/templates"
+import { wrapper } from "../redux/store";
+
+import { withRouter } from "next/router";
+import {
+  BlogLayout,
+  MainLayout,
+  StarbucksLayout,
+} from "../components/templates";
 
 const layouts = {
   main: MainLayout,
   blog: BlogLayout,
   starbucks: StarbucksLayout,
-}
+};
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   let Layout;
   switch (router.pathname.split("/")[1]) {
     case "blog":
-      Layout = layouts['blog']
+      Layout = layouts["blog"];
       break;
     case "starbucks":
-      Layout = layouts['starbucks']
+      Layout = layouts["starbucks"];
       break;
     default:
-      Layout = layouts['main']
+      Layout = layouts["main"];
       break;
   }
   return (
-    <Provider store={store}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+    // <Provider store={store}>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
 
-    </Provider>
-  )
+    // </Provider>
+  );
 }
 
-export default withRouter(MyApp)
+export default wrapper.withRedux(withRouter(MyApp));

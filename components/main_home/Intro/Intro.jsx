@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import { init } from "ityped";
 import Card from "../reusable/Card";
+import { connect } from "react-redux";
 
-function Intro() {
+function Intro({ name }) {
   const textRef = useRef();
   useEffect(() => {
     init(textRef.current, {
@@ -16,12 +17,13 @@ function Intro() {
         "Tailwind",
         "SCSS",
         "Vercel",
+        "Redux"
       ],
     });
   }, []);
   return (
     <div className="py-4">
-      Hello there, it's me
+      Hello, {name && name != "" && name != "guest" ? name : "good person"}
       <h1 className="font-bold text-2xl my-1">Alfi Samudro Mulyo</h1>a Software
       Engineer
       <p className="mt-6">
@@ -31,7 +33,7 @@ function Intro() {
         This site built with: <br />
         <span className="font-bold" ref={textRef} />
       </p>
-      <p className="mt-8 mb-5 text-center font-bold">Check my portfolios</p>
+      <p className="mt-8 mb-5 text-center font-bold">Check my hobbies</p>
       <div className="grid grid-cols-12 gap-0 md:gap-6 gap-y-6 w-full">
         <Card
           title="Built-in Blog"
@@ -70,4 +72,8 @@ function Intro() {
   );
 }
 
-export default Intro;
+const mapStateToProps = (state) => {
+  return { name: state.main.name };
+};
+
+export default connect(mapStateToProps)(Intro);

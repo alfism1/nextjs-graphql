@@ -58,17 +58,31 @@ function Home({ name, setInfo }) {
 
       <div className="main_home">
         <Container>
-          <Intro />
           <>
-            <p>Enter a Name {name}:</p>
-            <input
-              type="text"
-              value={newName}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <button onClick={() => setInfo(newName)}>Submit</button>
+            <div className="p-4 border my-4 rounded-md shadow-md">
+              <div className="text-xl font-bold mb-2">Enter a name {name}:</div>
+              <div className="flex flex-row justify-center items-center">
+                <input
+                  className="border rounded-l-md flex-1 px-3 py-2 outline-none"
+                  type="text"
+                  value={newName}
+                  onChange={(e) => setName(e.target.value)}
+                  onKeyPress={(e) => {
+                    if (e.code == "Enter") setInfo(newName);
+                  }}
+                />
+                <button
+                  className="border-r border-t border-b rounded-r-md px-3 py-2 bg-blue-900 active:bg-red-900 transition-all duration-150 text-white"
+                  onClick={() => setInfo(newName)}
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
             {/* <Counter /> */}
           </>
+
+          <Intro />
         </Container>
       </div>
     </React.Fragment>

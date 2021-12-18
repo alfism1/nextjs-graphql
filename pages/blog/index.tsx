@@ -69,7 +69,7 @@ function HomeBlog({ posts, nytimesPosts, nytimesViewedPosts }: Props) {
         <Container>
           <H1 style="text-center">Original Posts Featured</H1>
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 mt-6">
-            {posts.map((post) => (
+            {posts?.map((post) => (
               <PostCardV1
                 key={post.node.title}
                 title={post.node.title}
@@ -88,7 +88,7 @@ function HomeBlog({ posts, nytimesPosts, nytimesViewedPosts }: Props) {
         <H1 style="py-4">Nytimes News</H1>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {/* {nytimesPosts.results.slice(0, 2).map((post) => { */}
-          {nytimesPosts.results.slice(0, 2).map((post) => {
+          {nytimesPosts?.results.slice(0, 2).map((post) => {
             return (
               <PostCardV1
                 key={post.title}
@@ -102,7 +102,7 @@ function HomeBlog({ posts, nytimesPosts, nytimesViewedPosts }: Props) {
           })}
         </div>
         <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {nytimesPosts.results.slice(2, 5).map((post) => {
+          {nytimesPosts?.results.slice(2, 5).map((post) => {
             return (
               <PostCardV2
                 key={post.title}
@@ -120,17 +120,20 @@ function HomeBlog({ posts, nytimesPosts, nytimesViewedPosts }: Props) {
 
         <div className="mt-6 grid gap-6 grid-cols-1 md:grid-cols-12">
           <div className="md:col-span-8">
-            <PostCardV1
-              title={nytimesPosts.results[6].title}
-              category={nytimesPosts.results[6].section}
-              imageSrc={checkNytimesMedia(nytimesPosts.results[6]).url}
-              publishData={moment(
-                nytimesPosts.results[6].published_date
-              ).format("MMM DD, YYYY")}
-              originalUrl={nytimesPosts.results[6].url}
-            />
+            {nytimesPosts?.results[6] && (
+              <PostCardV1
+                title={nytimesPosts?.results[6].title}
+                category={nytimesPosts?.results[6].section}
+                imageSrc={checkNytimesMedia(nytimesPosts?.results[6]).url}
+                publishData={moment(
+                  nytimesPosts?.results[6].published_date
+                ).format("MMM DD, YYYY")}
+                originalUrl={nytimesPosts?.results[6].url}
+              />
+            )}
+
             <div className="mt-6 grid gap-6 grid-cols-1 md:grid-cols-2">
-              {nytimesPosts.results.slice(7, 11).map((post) => (
+              {nytimesPosts?.results.slice(7, 11).map((post) => (
                 <PostCardV2
                   key={post.title}
                   title={post.title}
@@ -148,7 +151,7 @@ function HomeBlog({ posts, nytimesPosts, nytimesViewedPosts }: Props) {
           </div>
           <div className="md:col-span-4">
             <H1 style="pb-4 -mt-1">Nytimes Most Read</H1>
-            {nytimesViewedPosts.results.slice(0, 4).map((post) => (
+            {nytimesViewedPosts?.results.slice(0, 4).map((post) => (
               <PostList
                 key={post.title}
                 title={post.title}
@@ -158,7 +161,7 @@ function HomeBlog({ posts, nytimesPosts, nytimesViewedPosts }: Props) {
             ))}
 
             <H1 style="pb-4 -mt-1">Nytimes Popular</H1>
-            {nytimesViewedPosts.results.slice(4, 6).map((post) => (
+            {nytimesViewedPosts?.results.slice(4, 6).map((post) => (
               <PostCardV2
                 key={post.title}
                 title={post.title}
@@ -182,13 +185,13 @@ export async function getStaticProps() {
   try {
     const nytimes = await axios.get(
       "https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json?api-key=" +
-        process.env.NEXT_PUBLIC_NYTIMES_KEY
+      process.env.NEXT_PUBLIC_NYTIMES_KEY
     );
     const nytimesPosts = nytimes.data;
 
     const nytimesViewed = await axios.get(
       "https://api.nytimes.com/svc/mostpopular/v2/viewed/7.json?api-key=" +
-        process.env.NEXT_PUBLIC_NYTIMES_KEY
+      process.env.NEXT_PUBLIC_NYTIMES_KEY
     );
     const nytimesViewedPosts = nytimesViewed.data;
 

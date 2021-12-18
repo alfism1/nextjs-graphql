@@ -3,6 +3,9 @@ import 'tailwindcss/tailwind.css'
 import '../styles/global.scss'
 import type { AppProps } from 'next/app'
 
+import { Provider } from 'react-redux'
+import store from '../app/store'
+
 import { withRouter } from 'next/router'
 import { BlogLayout, MainLayout, StarbucksLayout } from "../components/templates"
 
@@ -26,9 +29,12 @@ function MyApp({ Component, pageProps, router }: AppProps) {
       break;
   }
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <Provider store={store}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+
+    </Provider>
   )
 }
 

@@ -1,7 +1,8 @@
 import React from "react";
 import Head from "next/head";
-import { Intro, Header } from "../components/main_home";
+import { Intro } from "../components/main_home";
 import { Container } from "../components/templates/index";
+import Counter from "../features/counter/Counter"
 
 function Home() {
   return (
@@ -55,6 +56,7 @@ function Home() {
       <div className="main_home">
         <Container>
           <Intro />
+          <Counter />
         </Container>
       </div>
     </React.Fragment>

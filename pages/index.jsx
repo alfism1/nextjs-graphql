@@ -60,7 +60,7 @@ function Home({ name, setInfo }) {
         <Container>
           <>
             <div className="p-4 border my-4 rounded-md shadow-md">
-              <div className="text-xl font-bold mb-2">Enter a name {name}:</div>
+              <div className="text-xl font-bold mb-2">Enter a name:</div>
               <div className="flex flex-row items-center w-full">
                 <input
                   className="border rounded-l-md w-full px-3 py-1 md:py-2 outline-none"

@@ -12,6 +12,11 @@ const main = (
         ...state,
         name: action.payload,
       };
+    case t.SET_COLOR:
+      return {
+        ...state,
+        color: action.payload,
+      };
     default:
       return { ...state };
   }

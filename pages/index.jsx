@@ -3,11 +3,39 @@ import Head from "next/head";
 import { Intro } from "../components/main_home";
 import { Container } from "../components/templates/index";
 import { connect } from "react-redux";
-import { setInfo } from "../redux/actions/main";
+import { setInfo, setColor } from "../redux/actions/main";
 // import Counter from "../features/counter/Counter"
 
-function Home({ name, setInfo }) {
+function Home({ name, setInfo, setColor }) {
   const [newName, setName] = useState("");
+  // const [newColor, setNewColor] = useState("");
+
+  const getRandomColor = () => {
+    let randomNumber = Math.floor(Math.random() * 7) + 1;
+    switch (randomNumber) {
+      case 1:
+        return "bg-red-700";
+      case 2:
+        return "bg-green-700";
+      case 3:
+        return "bg-blue-700";
+      case 4:
+        return "bg-yellow-700";
+      case 5:
+        return "bg-orange-700";
+      case 6:
+        return "bg-cyan-700";
+
+      default:
+        return "bg-gray-700";
+    }
+  };
+
+  const handleSubmit = () => {
+    setInfo(newName);
+    setColor(getRandomColor());
+  };
+
   return (
     <React.Fragment>
       <Head>
@@ -68,12 +96,12 @@ function Home({ name, setInfo }) {
                   value={newName}
                   onChange={(e) => setName(e.target.value)}
                   onKeyPress={(e) => {
-                    if (e.code == "Enter") setInfo(newName);
+                    if (e.code == "Enter") handleSubmit();
                   }}
                 />
                 <button
                   className="border-r border-t border-b rounded-r-md px-3 py-1 md:py-2 bg-blue-900 active:bg-red-900 transition-all duration-150 text-white"
-                  onClick={() => setInfo(newName)}
+                  onClick={() => handleSubmit()}
                 >
                   Submit
                 </button>
@@ -90,11 +118,15 @@ function Home({ name, setInfo }) {
 }
 
 const mapStateToProps = (state) => {
-  return { name: state.main.name };
+  return {
+    name: state.main.name,
+    color: state.main.color,
+  };
 };
 
 const mapDispatchToProps = {
   setInfo,
+  setColor,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

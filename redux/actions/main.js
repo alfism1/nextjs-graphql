@@ -8,3 +8,10 @@ export const setInfo = (name) => (dispatch) => {
     payload: name,
   });
 };
+
+export const setColor = (color) => (dispatch) => {
+  dispatch({
+    type: t.SET_COLOR,
+    payload: color,
+  });
+};

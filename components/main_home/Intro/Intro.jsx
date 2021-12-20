@@ -3,7 +3,7 @@ import { init } from "ityped";
 import Card from "../reusable/Card";
 import { connect } from "react-redux";
 
-function Intro({ name }) {
+function Intro({ name, color }) {
   const textRef = useRef();
   useEffect(() => {
     init(textRef.current, {
@@ -17,14 +17,15 @@ function Intro({ name }) {
         "Tailwind",
         "SCSS",
         "Vercel",
-        "Redux"
+        "Redux",
       ],
     });
   }, []);
   return (
     <div className="py-4">
-      Hello, {name && name != "" && name != "guest" ? name : "good person"}
-      <h1 className="font-bold text-2xl my-1">Alfi Samudro Mulyo</h1>a Software
+      Hello, {name && name != "" && name != "guest" ? name : "good person"}{" "}
+      <span className={`w-3 h-3 border rounded-full ${color} inline-block`} />
+      <h1 className="font-bold text-2xl my-1">I'm Alfi Samudro Mulyo</h1>a Software
       Engineer
       <p className="mt-6">
         Here is my playground to explore any new tech stack
@@ -73,7 +74,7 @@ function Intro({ name }) {
 }
 
 const mapStateToProps = (state) => {
-  return { name: state.main.name };
+  return { name: state.main.name, color: state.main.color };
 };
 
 export default connect(mapStateToProps)(Intro);

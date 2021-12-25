@@ -6,19 +6,9 @@ import { connect } from "react-redux";
 import { setInfo, setColor } from "../redux/actions/main";
 // import Counter from "../features/counter/Counter"
 
-import { io } from "socket.io-client";
-
 function Home({ name, setInfo, setColor }) {
   const [newName, setName] = useState("");
   // const [newColor, setNewColor] = useState("");
-
-  useEffect(() => {
-    const socket = io("http://localhost:4000");
-    // client-side
-    socket.on("connect", () => {
-      console.log(socket.id);
-    });
-  }, []);
 
   const getRandomColor = () => {
     let randomNumber = Math.floor(Math.random() * 7) + 1;

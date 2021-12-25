@@ -3,6 +3,7 @@ import * as t from "../types";
 const main = (
   state = {
     name: "guest",
+    chatUsername: "random guy",
   },
   action
 ) => {
@@ -16,6 +17,11 @@ const main = (
       return {
         ...state,
         color: action.payload,
+      };
+    case t.SET_CHAT_USERNAME:
+      return {
+        ...state,
+        chatUsername: action.payload,
       };
     default:
       return { ...state };

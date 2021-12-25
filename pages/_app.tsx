@@ -30,6 +30,9 @@ function MyApp({ Component, pageProps, router }: AppProps) {
     case "starbucks":
       Layout = layouts["starbucks"];
       break;
+    case "chat":
+      Layout = React.Fragment
+      break;
     default:
       Layout = layouts["main"];
       break;

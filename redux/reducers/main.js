@@ -3,7 +3,6 @@ import * as t from "../types";
 const main = (
   state = {
     name: "guest",
-    chatUsername: "random guy",
   },
   action
 ) => {

@@ -3,6 +3,8 @@ import "tailwindcss/tailwind.css";
 import "../styles/global.scss";
 import type { AppProps } from "next/app";
 
+import SocketProvider from "../context/SocketProvider";
+
 // import { Provider } from 'react-redux'
 // import store from '../example_app/store'
 
@@ -31,7 +33,10 @@ function MyApp({ Component, pageProps, router }: AppProps) {
       Layout = layouts["starbucks"];
       break;
     case "chat":
-      Layout = React.Fragment
+      Layout = SocketProvider;
+      break;
+    case "playground":
+      Layout = SocketProvider;
       break;
     default:
       Layout = layouts["main"];

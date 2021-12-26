@@ -1,71 +1,78 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { connect } from "react-redux";
+import { setChatUsername } from "../../redux/actions/main";
 import { io } from "socket.io-client";
 
 import { Chat as ChatComponent } from "../../components/chat";
 import UserClient from "../../components/chat/Login";
 
-import useLocalStorage from "../../hooks/useLocalStorage";
+import { useSocket } from "../../context/SocketProvider";
 
-const Chat = ({ chatUsername, color }) => {
-  // const socket = io("http://localhost:4000");
+// import useLocalStorage from "../../hooks/useLocalStorage";
 
-  const [user, setUser] = useState(null);
+const Chat = ({ chatUsername, setChatUsername }) => {
+  let socket = useSocket();
 
-  const [getId, setId] = useLocalStorage("id", null);
+  const [message, setMessage] = useState("");
+  const [socketMessage, setSocketMessage] = useState(null);
+  const [messageList, setMessageList] = useState([]);
+
+  // const [getSocketId, setSocketId] = useLocalStorage("socketId", null);
 
   useEffect(() => {
-    // setId({
-    //   name: "test",
-    //   id: "hehe",
-    // });
-    // console.log(getId());
-    // // client-side
-    // socket.on("connect", () => {
-    //   console.log(socket.id);
-    // });
-    // return () => {
-    //   socket.disconnect();
-    // };
-  }, [user]);
+    socket?.on("chat message", (msg) => {
+      setSocketMessage(msg);
+    });
+  }, [chatUsername]);
 
-  // const handleClick = () => {
-  //   socket.emit("chat message", "My name is " + name);
-  //   socket.on("chat message", function (msg) {
-  //     console.log("msg:", msg, socket.id);
-  //     // var item = document.createElement("li");
-  //     // item.textContent = msg;
-  //     // messages.appendChild(item);
-  //     // window.scrollTo(0, document.body.scrollHeight);
-  //   });
-  //   console.log("test");
-  // };
+  useEffect(() => {
+    if (socketMessage === null) return;
+    setMessageList([...messageList, socketMessage]);
+    return () => {
+      setMessageList([]);
+    };
+  }, [socketMessage]);
 
-  // <div
-  //           onClick={handleClick}
-  //           role={`button`}
-  //           className="p-4 border cursor-pointer"
-  //         >
-  //           Button
-  //         </div>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log(socket?.id);
+
+    socket.emit("chat message", {
+      socketId: socket.id,
+      username: chatUsername,
+      message,
+    });
+
+    setMessage("");
+  };
+
+  const handleKeyPress = (e) => {
+    setMessage(e.target.value);
+  };
 
   return (
     <>
-    {chatUsername}
-      {user == null ? (
+      {chatUsername == null ? (
         <UserClient />
       ) : (
         <ChatComponent>
-          <ChatComponent.Header name={chatUsername} />
+          <ChatComponent.Header
+            name={chatUsername}
+            setChatUsername={setChatUsername}
+          />
           <ChatComponent.Container>
-            <ChatComponent.Bubble
-              name={"Roger"}
-              color={"text-green-700"}
-              message="est drive fdsafdsa Test drive fdsafdsa Test drive fdsafdsa Test
-            drive fdsafdsa Test drive fdsafdsa Test drive fdsafdsa Test drive
-            fdsafdsa Test drive fdsafdsa"
-            />
-            <ChatComponent.Bubble
+            {messageList.map((m, i) => {
+              return (
+                <ChatComponent.Bubble
+                  key={i}
+                  name={m.username}
+                  color={"text-green-700"}
+                  message={m.message}
+                  self={m.socketId == socket.id}
+                />
+              );
+            })}
+            {/* <ChatComponent.Bubble
               self={true}
               message="My name is methos oh yeah and you make me so happy"
             />
@@ -73,9 +80,13 @@ const Chat = ({ chatUsername, color }) => {
               name={"Granger"}
               color={"text-red-700"}
               message="Lorem ipsum dolor sit amet consectetur adipisicing elit"
-            />
+            /> */}
           </ChatComponent.Container>
-          <ChatComponent.Input handleClick={null} handleKeyPress={null} />
+          <ChatComponent.Input
+            value={message}
+            handleSubmit={handleSubmit}
+            handleKeyPress={handleKeyPress}
+          />
         </ChatComponent>
       )}
     </>
@@ -88,4 +99,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Chat);
+const mapDispatchToProps = {
+  setChatUsername,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Chat);

@@ -6,7 +6,7 @@ import { FaSignOutAlt } from "react-icons/fa";
 export const Chat = ({ children, ...restProps }) => {
   return (
     <div
-      className="container max-w-screen-2xl h-auto mx-auto block shadow-xl"
+      className="w-full"
       {...restProps}
     >
       {children}
@@ -14,15 +14,15 @@ export const Chat = ({ children, ...restProps }) => {
   );
 };
 
-Chat.Header = ({ name, setChatUsername, ...restProps }) => {
+Chat.Header = ({ chatWith, setChatUsername, ...restProps }) => {
   return (
     <div
       className={`flex items-center justify-between gap-2 w-full px-4 bg-blue-900 text-white font-bold shadow-lg ${styles.header}`}
       {...restProps}
     >
       <div className="flex items-center gap-2">
-        <span className="bg-green-500 w-3 h-3 rounded-full inline-block" />{" "}
-        {name}
+        {/* <span className="bg-green-500 w-3 h-3 rounded-full inline-block" />{" "} */}
+        {chatWith}
       </div>
       <button
         onClick={() => {

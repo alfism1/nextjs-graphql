@@ -34,6 +34,7 @@ const Sidebar = ({ socketId, activeName, userList, chatColor }) => {
           {userList
             .filter((u) => u.userID != socketId)
             .map((u) => {
+              console.log("userList", socketId, u);
               return (
                 <div
                   role="button"

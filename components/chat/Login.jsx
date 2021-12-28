@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { useRouter } from "next/router";
 
 import { connect } from "react-redux";
 import useLocalStorage from "../../hooks/useLocalStorage";
@@ -61,6 +62,8 @@ const UserClient = ({ setChatUsername, setChatColor }) => {
 
   const usernameRef = useRef("");
 
+  const router = useRouter();
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -68,6 +71,8 @@ const UserClient = ({ setChatUsername, setChatColor }) => {
     setChatUsername(usernameRef.current.value); // set username redux
     saveChatColor(color); // set color localstorage
     setChatColor(color); // set color redux
+
+    router.push("/chat");
   };
 
   const handleChange = (e) => {

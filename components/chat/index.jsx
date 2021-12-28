@@ -102,9 +102,7 @@ Chat.Bubble = ({ self, name, color, message }) => {
           self && "float-right"
         }`}
       >
-        {!self && (
-          <span className={`font-bold block mb-1 ${textColor}`}>{name}</span>
-        )}
+        <span className={`font-bold block mb-1 ${textColor}`}>{self ? "You" : name}</span>
 
         {message}
       </span>

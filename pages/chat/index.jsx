@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { setChatUsername } from "../../redux/actions/main";
+import { useRouter } from "next/router";
 
 import { Chat as ChatComponent } from "../../components/chat";
 import UserClient from "../../components/chat/Login";
@@ -20,23 +21,31 @@ const Chat = ({ chatUsername, setChatUsername, chatColor }) => {
 
   const [getSocketId, _setSocketId] = useLocalStorage("socketId", null);
 
+  const router = useRouter();
+
   useEffect(() => {
-    socket?.auth = { username: chatUsername, color: chatColor };
-    socket?.connect();
+    if (chatUsername == null) {
+      router.push("/chat/login");
+      return;
+    }
 
-    socket?.on("users", (users) => {
-      console.log("users", users)
-      setUserList(users);
-    });
+    if (socket !== undefined) {
+      socket.auth = { username: chatUsername, color: chatColor };
+      socket.connect();
 
-    socket?.on("user connected", (newUser) => {
-      console.log(userList)
-      // setUserList([...userList, newUser]);
-    });
+      socket.on("users", (users) => {
+        setUserList(users);
+      });
 
-    socket?.on("chat message", (msg) => {
-      setSocketMessage(msg);
-    });
+      socket.on("user connected", (newUser) => {
+        console.log(userList);
+        // setUserList([...userList, newUser]);
+      });
+
+      socket.on("chat message", (msg) => {
+        setSocketMessage(msg);
+      });
+    }
   }, [chatUsername]);
 
   useEffect(() => {
@@ -49,7 +58,7 @@ const Chat = ({ chatUsername, setChatUsername, chatColor }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(socket?.id);
+    // console.log(socket.id);
 
     socket.emit("chat message", {
       socketId: socket.id,
@@ -59,6 +68,8 @@ const Chat = ({ chatUsername, setChatUsername, chatColor }) => {
     });
 
     setMessage("");
+
+    console.log(userList);
   };
 
   const handleKeyPress = (e) => {
@@ -67,11 +78,14 @@ const Chat = ({ chatUsername, setChatUsername, chatColor }) => {
 
   return (
     <>
-      {chatUsername == null ? (
-        <UserClient />
-      ) : (
+      {chatUsername && (
         <div className="container max-w-screen-2xl h-auto mx-auto shadow-xl flex flex-row">
-          <Sidebar socketId={getSocketId()} activeName={chatUsername} userList={userList} chatColor={chatColor} />
+          <Sidebar
+            socketId={getSocketId()}
+            activeName={chatUsername}
+            userList={userList}
+            chatColor={chatColor}
+          />
           <ChatComponent>
             <ChatComponent.Header
               name={"somebody"}
@@ -79,7 +93,6 @@ const Chat = ({ chatUsername, setChatUsername, chatColor }) => {
             />
             <ChatComponent.Container>
               {messageList.map((m, i) => {
-                console.log(m)
                 return (
                   <ChatComponent.Bubble
                     key={i}
@@ -90,7 +103,6 @@ const Chat = ({ chatUsername, setChatUsername, chatColor }) => {
                   />
                 );
               })}
-
             </ChatComponent.Container>
             <ChatComponent.Input
               value={message}

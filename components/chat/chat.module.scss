@@ -1,11 +1,41 @@
+.text_red {
+  color: red;
+}
+.text_blue {
+  color: blue;
+}
+.text_green {
+  color: green;
+}
+.text_yellow {
+  color: rgb(175, 175, 0);
+}
+.text_indigo {
+  color: indigo;
+}
+.text_purple {
+  color: purple;
+}
+.text_pink {
+  color: rgb(255, 123, 145);
+}
+
 .header {
   height: 50px;
 }
 
 .container {
-  
-
   .overflow {
-    height: calc(100vh - 100px);  
+    height: calc(100vh - 100px);
+  }
+}
+
+.sidebar_body {
+  .active_user {
+    height: 100px;
+  }
+
+  .user_list {
+    height: calc(100vh - 190px);
   }
 }

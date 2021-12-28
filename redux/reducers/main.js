@@ -22,6 +22,11 @@ const main = (
         ...state,
         chatUsername: action.payload,
       };
+    case t.SET_CHAT_COLOR:
+      return {
+        ...state,
+        chatColor: action.payload,
+      };
     default:
       return { ...state };
   }

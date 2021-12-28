@@ -22,3 +22,10 @@ export const setChatUsername = (name) => (dispatch) => {
     payload: name,
   });
 };
+
+export const setChatColor = (color) => (dispatch) => {
+  dispatch({
+    type: t.SET_CHAT_COLOR,
+    payload: color,
+  });
+};

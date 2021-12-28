@@ -10,7 +10,7 @@ import { useSocket } from "../../context/SocketProvider";
 
 import useLocalStorage from "../../hooks/useLocalStorage";
 
-const Chat = ({ chatUsername, setChatUsername }) => {
+const Chat = ({ chatUsername, setChatUsername, chatColor }) => {
   let socket = useSocket();
 
   const [userList, setUserList] = useState([]);
@@ -21,7 +21,7 @@ const Chat = ({ chatUsername, setChatUsername }) => {
   const [getSocketId, _setSocketId] = useLocalStorage("socketId", null);
 
   useEffect(() => {
-    socket?.auth = { username: chatUsername };
+    socket?.auth = { username: chatUsername, color: chatColor };
     socket?.connect();
 
     socket?.on("users", (users) => {
@@ -55,6 +55,7 @@ const Chat = ({ chatUsername, setChatUsername }) => {
       socketId: socket.id,
       username: chatUsername,
       message,
+      textColor: chatColor,
     });
 
     setMessage("");
@@ -70,7 +71,7 @@ const Chat = ({ chatUsername, setChatUsername }) => {
         <UserClient />
       ) : (
         <div className="container max-w-screen-2xl h-auto mx-auto shadow-xl flex flex-row">
-          <Sidebar socketId={getSocketId()} activeName={chatUsername} userList={userList} />
+          <Sidebar socketId={getSocketId()} activeName={chatUsername} userList={userList} chatColor={chatColor} />
           <ChatComponent>
             <ChatComponent.Header
               name={"somebody"}
@@ -78,25 +79,18 @@ const Chat = ({ chatUsername, setChatUsername }) => {
             />
             <ChatComponent.Container>
               {messageList.map((m, i) => {
+                console.log(m)
                 return (
                   <ChatComponent.Bubble
                     key={i}
                     name={m.username}
-                    color={"text-green-700"}
+                    color={m.textColor}
                     message={m.message}
                     self={m.socketId == socket.id}
                   />
                 );
               })}
-              {/* <ChatComponent.Bubble
-              self={true}
-              message="My name is methos oh yeah and you make me so happy"
-            />
-            <ChatComponent.Bubble
-              name={"Granger"}
-              color={"text-red-700"}
-              message="Lorem ipsum dolor sit amet consectetur adipisicing elit"
-            /> */}
+
             </ChatComponent.Container>
             <ChatComponent.Input
               value={message}
@@ -113,6 +107,7 @@ const Chat = ({ chatUsername, setChatUsername }) => {
 const mapStateToProps = (state) => {
   return {
     chatUsername: state.main.chatUsername,
+    chatColor: state.main.chatColor,
   };
 };
 

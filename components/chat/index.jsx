@@ -5,10 +5,7 @@ import { FaSignOutAlt } from "react-icons/fa";
 
 export const Chat = ({ children, ...restProps }) => {
   return (
-    <div
-      className="w-full"
-      {...restProps}
-    >
+    <div className="w-full" {...restProps}>
       {children}
     </div>
   );
@@ -71,6 +68,33 @@ Chat.Input = ({ handleKeyPress, handleSubmit, value, ...restProps }) => {
 };
 
 Chat.Bubble = ({ self, name, color, message }) => {
+  let textColor;
+  switch (color) {
+    case "red":
+      textColor = styles.text_red;
+      break;
+    case "green":
+      textColor = styles.text_green;
+      break;
+    case "blue":
+      textColor = styles.text_blue;
+      break;
+    case "yellow":
+      textColor = styles.text_yellow;
+      break;
+    case "purple":
+      textColor = styles.text_purple;
+      break;
+    case "indigo":
+      textColor = styles.text_indigo;
+      break;
+    case "pink":
+      textColor = styles.text_pink;
+      break;
+    default:
+      textColor = "";
+      break;
+  }
   return (
     <div className="mt-2">
       <span
@@ -79,7 +103,7 @@ Chat.Bubble = ({ self, name, color, message }) => {
         }`}
       >
         {!self && (
-          <span className={`font-bold block mb-1 ${color}`}>{name}</span>
+          <span className={`font-bold block mb-1 ${textColor}`}>{name}</span>
         )}
 
         {message}

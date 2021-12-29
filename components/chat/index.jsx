@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./chat.module.scss";
-
 import { FaSignOutAlt } from "react-icons/fa";
 
 export const Chat = ({ children, ...restProps }) => {

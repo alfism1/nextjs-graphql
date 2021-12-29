@@ -1,9 +1,15 @@
-import React, {memo} from "react";
+import React, { memo } from "react";
 import Link from "next/link";
 import styles from "./chat.module.scss";
 
-const Sidebar = ({ socketId, activeName, userList, chatColor }) => {
-  console.log("hehehe");
+const Sidebar = ({
+  socketId,
+  activeName,
+  userList,
+  chatColor,
+  chatWith,
+  setChatWith,
+}) => {
   return (
     <div className="w-80 bg-blue-200">
       <div
@@ -40,6 +46,9 @@ const Sidebar = ({ socketId, activeName, userList, chatColor }) => {
                   role="button"
                   key={u.userID}
                   className="border-b hover:bg-blue-300 transition-all duration-150 p-4"
+                  onClick={() =>
+                    setChatWith({ socketID: u.userID, username: u.username })
+                  }
                 >
                   <UserList username={u.username} />
                 </div>

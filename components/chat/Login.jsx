@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { useRouter } from "next/router";
-
 import { connect } from "react-redux";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { setChatUsername, setChatColor } from "../../redux/actions/main";

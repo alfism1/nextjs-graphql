@@ -1,8 +1,9 @@
-import React from "react";
+import React, {memo} from "react";
 import Link from "next/link";
 import styles from "./chat.module.scss";
 
 const Sidebar = ({ socketId, activeName, userList, chatColor }) => {
+  console.log("hehehe");
   return (
     <div className="w-80 bg-blue-200">
       <div
@@ -34,7 +35,6 @@ const Sidebar = ({ socketId, activeName, userList, chatColor }) => {
           {userList
             .filter((u) => u.userID != socketId)
             .map((u) => {
-              console.log("userList", socketId, u);
               return (
                 <div
                   role="button"
@@ -64,4 +64,4 @@ const UserList = ({ username, isActive = true }) => {
   );
 };
 
-export default Sidebar;
+export default memo(Sidebar);

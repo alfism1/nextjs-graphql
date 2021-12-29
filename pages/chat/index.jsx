@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import { connect } from "react-redux";
 import { setChatUsername } from "../../redux/actions/main";
 import { useRouter } from "next/router";
 
 import { Chat as ChatComponent } from "../../components/chat";
-import UserClient from "../../components/chat/Login";
+
 import Sidebar from "../../components/chat/Sidebar";
 
 import { useSocket } from "../../context/SocketProvider";
@@ -22,6 +22,8 @@ const Chat = ({ chatUsername, setChatUsername, chatColor }) => {
   const [getSocketId, _setSocketId] = useLocalStorage("socketId", null);
 
   const router = useRouter();
+
+  const forwardedRef = useRef();
 
   useEffect(() => {
     if (chatUsername == null) {
@@ -49,6 +51,11 @@ const Chat = ({ chatUsername, setChatUsername, chatColor }) => {
   }, [chatUsername]);
 
   useEffect(() => {
+    forwardedRef.current.scrollTo(0, forwardedRef.current.scrollHeight);
+    console.log(forwardedRef.current.scrollHeight);
+  }, [messageList]);
+
+  useEffect(() => {
     if (socketMessage === null) return;
     setMessageList([...messageList, socketMessage]);
     return () => {
@@ -68,8 +75,6 @@ const Chat = ({ chatUsername, setChatUsername, chatColor }) => {
     });
 
     setMessage("");
-
-    console.log(userList);
   };
 
   const handleKeyPress = (e) => {
@@ -91,7 +96,7 @@ const Chat = ({ chatUsername, setChatUsername, chatColor }) => {
               name={"somebody"}
               setChatUsername={setChatUsername}
             />
-            <ChatComponent.Container>
+            <ChatComponent.Container forwardedRef={forwardedRef}>
               {messageList.map((m, i) => {
                 return (
                   <ChatComponent.Bubble

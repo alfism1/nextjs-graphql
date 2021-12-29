@@ -9,7 +9,7 @@ const UserClient = ({ setChatUsername, setChatColor }) => {
   const [username, setUsername] = useState("");
   const [message, setMessage] = useState("");
   const [color, setColor] = useState("gray");
-  const [bgColor, setBgColor] = useState("bg-red-800");
+  const [bgColor, setBgColor] = useState("bg-white");
 
   const [_getChatUsername, saveChatUsername] = useLocalStorage(
     "chatUsername",

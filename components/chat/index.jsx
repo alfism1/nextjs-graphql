@@ -32,13 +32,16 @@ Chat.Header = ({ chatWith, setChatUsername, ...restProps }) => {
   );
 };
 
-Chat.Container = ({ children, ...restProps }) => {
+Chat.Container = ({ children, forwardedRef, ...restProps }) => {
   return (
     <div
       className={`relative w-full bg-blue-100 ${styles.container}`}
       {...restProps}
     >
-      <div className={`p-3 overflow-y-scroll ${styles.overflow}`}>
+      <div
+        ref={forwardedRef}
+        className={`p-3 overflow-y-scroll ${styles.overflow}`}
+      >
         {children}
       </div>
     </div>
@@ -102,7 +105,9 @@ Chat.Bubble = ({ self, name, color, message }) => {
           self && "float-right"
         }`}
       >
-        <span className={`font-bold block mb-1 ${textColor}`}>{self ? "You" : name}</span>
+        <span className={`font-bold block mb-1 ${textColor}`}>
+          {self ? "You" : name}
+        </span>
 
         {message}
       </span>
